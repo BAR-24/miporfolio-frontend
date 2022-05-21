@@ -6,6 +6,7 @@ import com.miporfoliobackend.bar.models.Persona;
 import com.miporfoliobackend.bar.services.IPersonaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class PersonaController {
 
     @Autowired IPersonaService ipersonaService;
@@ -67,7 +69,7 @@ public class PersonaController {
     }
 
     @GetMapping("/personas/traer/{id}")
-    public Persona findPersona(Long id){
+    public Persona findPersona(@PathVariable Long id){
         return ipersonaService.findPersona(id);
     }
 

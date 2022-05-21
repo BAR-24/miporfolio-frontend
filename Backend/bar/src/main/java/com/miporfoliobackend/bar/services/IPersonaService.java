@@ -9,13 +9,13 @@ public interface IPersonaService {
     public List<Persona> getPersonas();
     
     //Traer Persona
-    public Persona findPersona(long id);
+    public Persona findPersona(Long id);
 
     //Guardar Persona
     public void savePersona(Persona persona);
 
     //Borra Persona
-    public void deletePersona(long id);
+    public void deletePersona(Long id);
 
 
 

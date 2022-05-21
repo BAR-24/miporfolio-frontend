@@ -22,7 +22,7 @@ public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long prsId;
+    private Long prsId;
 
     @NotNull
     @Size(min = 1, max=50, message = "No cumple con los parametros de validacion")
@@ -62,7 +62,7 @@ public class Persona {
     public Persona() {
     }
     
-    public Persona(long prsId, String prsNombre, String prsApellido, int prsEdad, String prsOcupacion,
+    public Persona(Long prsId, String prsNombre, String prsApellido, int prsEdad, String prsOcupacion,
             String prsAcercaDeMi, String prsImgPerfilUrl, String prsImgPortadaUrl) {
         this.prsId = prsId;
         this.prsNombre = prsNombre;
