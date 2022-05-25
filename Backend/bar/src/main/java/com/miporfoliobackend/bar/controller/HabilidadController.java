@@ -34,12 +34,12 @@ public class HabilidadController {
     }
 
     @GetMapping("/habilidad/traer/{id}")
-    public Habilidad findHabilidad(Long id){
+    public Habilidad findHabilidad(@PathVariable("id") Long id){
         return iHabilidadService.findHabilidad(id);
     }
 
     @DeleteMapping("/habilidad/borrar/{id}")
-    public String deleteHabilidad(@PathVariable Long id){
+    public String deleteHabilidad(@PathVariable("id") Long id){
         iHabilidadService.deleteHabilidad(id);
         return "Se elimino Habilidad con exito";
     }

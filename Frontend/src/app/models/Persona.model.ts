@@ -1,30 +1,30 @@
 
 export class Persona {
-    id? : number;
-    nombre : string; 
-    apellido : string;
-    edad : number;
-    ocupacion :  string;
-    acercaDeMi : string;
-    imgPerfil : string;
-    imgPortada : string;
+    prsid? : number;
+    prsNombre : string; 
+    prsApellido : string;
+    prsEdad : number;
+    prsOcupacion :  string;
+    prsAcercaDeMi : string;
+    prsImgPerfilUrl : string;
+    prsImgPortadaUrl : string;
     listEdu : Array<any>;
     listExp : Array<any>;
     listHab : Array<any>;
     listPro : Array<any>;
    
-   
+
 
     constructor (nombre: string, apellido: string, edad: number, ocupacion: string,
         _acercaDeMi: string,_imgPerfil: string, _imgPortada: string,
          listEdu: Array<any>,listExp: Array<any>,listHab: Array<any>,listPro: Array<any>){
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.edad = edad;
-            this.ocupacion = ocupacion;
-            this.acercaDeMi = _acercaDeMi;
-            this.imgPerfil = _imgPerfil;
-            this.imgPortada = _imgPortada;
+            this.prsNombre = nombre;
+            this.prsApellido = apellido;
+            this.prsEdad = edad;
+            this.prsOcupacion = ocupacion;
+            this.prsAcercaDeMi = _acercaDeMi;
+            this.prsImgPerfilUrl = _imgPerfil;
+            this.prsImgPortadaUrl = _imgPortada;
             this.listEdu = listEdu;
             this.listExp = listExp;
             this.listHab = listHab;

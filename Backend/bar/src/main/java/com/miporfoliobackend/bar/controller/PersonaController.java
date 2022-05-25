@@ -6,6 +6,8 @@ import com.miporfoliobackend.bar.models.Persona;
 import com.miporfoliobackend.bar.services.IPersonaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,12 +71,13 @@ public class PersonaController {
     }
 
     @GetMapping("/personas/traer/{id}")
-    public Persona findPersona(@PathVariable Long id){
-        return ipersonaService.findPersona(id);
+    public ResponseEntity<Persona> findPersona(@PathVariable("id") Long id){
+             Persona persona =  ipersonaService.findPersona(id);
+             return new ResponseEntity<>(persona, HttpStatus.OK);        
     }
 
     @DeleteMapping("/personas/borrar/{id}")
-    public String deletePersona(@PathVariable Long id){
+    public String deletePersona(@PathVariable("id") Long id){
         ipersonaService.deletePersona(id);
         return "Se elimino persona con exito";
     }

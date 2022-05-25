@@ -34,12 +34,12 @@ public class ProyectoController {
     }
 
     @GetMapping("/proyecto/traer/{id}")
-    public Proyecto findProyecto(Long id){
+    public Proyecto findProyecto(@PathVariable("id") Long id){
         return iProyectoService.findProyecto(id);
     }
 
     @DeleteMapping("/proyecto/borrar/{id}")
-    public String deleteProyecto(@PathVariable Long id){
+    public String deleteProyecto(@PathVariable("id") Long id){
         iProyectoService.deleteProyecto(id);
         return "Se elimino proyecto con exito";
     }

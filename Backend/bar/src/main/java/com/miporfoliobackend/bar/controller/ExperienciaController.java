@@ -34,12 +34,12 @@ public class ExperienciaController {
     }
 
     @GetMapping("/eperiencia/traer/{id}")
-    public Experiencia findEducacion(Long id){
+    public Experiencia findEducacion(@PathVariable("id") Long id){
         return iexperienciaService.findExperiencia(id);
     }
 
     @DeleteMapping("/experiencia/borrar/{id}")
-    public String deleteExperiencia(@PathVariable Long id){
+    public String deleteExperiencia(@PathVariable("id") Long id){
         iexperienciaService.deleteExperiencia(id);
         return "Se elimino experiencia con exito";
     }

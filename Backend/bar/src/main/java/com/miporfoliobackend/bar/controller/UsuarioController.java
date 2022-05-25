@@ -39,12 +39,12 @@ public class UsuarioController {
     }
  
     @GetMapping("/usuarios/traer/{id}")
-    public Usuario findUsuario(Long id){
+    public Usuario findUsuario(@PathVariable("id") Long id){
         return iusuarioService.findUsuario(id);
     }
 
     @DeleteMapping("/usuarios/borrar/{id}")
-    public String deleteUsuario(@PathVariable Long id){
+    public String deleteUsuario(@PathVariable("id") Long id){
         iusuarioService.deleteUsuario(id);
         return "Se elimino usuario con exito";
     }

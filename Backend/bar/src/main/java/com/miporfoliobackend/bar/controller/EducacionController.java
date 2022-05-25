@@ -34,12 +34,12 @@ public class EducacionController {
     }
 
     @GetMapping("/educacion/traer/{id}")
-    public Educacion findEducacion(Long id){
+    public Educacion findEducacion(@PathVariable("id") Long id){
         return ieducacionService.findEducacion(id);
     }
 
     @DeleteMapping("/educacion/borrar/{id}")
-    public String deleteEducacion(@PathVariable Long id){
+    public String deleteEducacion(@PathVariable("id") Long id){
         ieducacionService.deleteEducacion(id);
         return "Se elimino educacion con exito";
     }
