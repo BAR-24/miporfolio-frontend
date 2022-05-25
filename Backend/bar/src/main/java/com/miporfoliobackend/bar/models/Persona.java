@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -58,10 +57,11 @@ public class Persona {
     @OneToMany(mappedBy = "persona") 
     private List<Proyecto> listPro = new ArrayList<>();
 
+  
+    public Persona(){
 
-    public Persona() {
     }
-    
+
     public Persona(Long prsId, String prsNombre, String prsApellido, int prsEdad, String prsOcupacion,
             String prsAcercaDeMi, String prsImgPerfilUrl, String prsImgPortadaUrl) {
         this.prsId = prsId;

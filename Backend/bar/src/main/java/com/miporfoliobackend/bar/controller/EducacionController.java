@@ -47,10 +47,9 @@ public class EducacionController {
 
     @PutMapping("/educacion/editar")
     public ResponseEntity<Educacion> editEducacionStatus(@RequestBody Educacion educacion){
-       ieducacionService.saveEducacion(educacion);             
-       
-       return new ResponseEntity<>(educacion,HttpStatus.OK);     
-
+        Educacion editEducacion = ieducacionService.saveEducacion(educacion);
+         return new ResponseEntity<>(editEducacion, HttpStatus.CREATED);      
+          
     }
 
 

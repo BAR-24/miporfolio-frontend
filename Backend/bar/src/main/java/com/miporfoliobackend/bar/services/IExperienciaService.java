@@ -12,7 +12,7 @@ public interface IExperienciaService {
     public Experiencia findExperiencia(long id);
 
     //Guardar experiencia
-    public void saveExperiencia(Experiencia educacion);
+    public Experiencia saveExperiencia(Experiencia educacion);
 
     //Borra experiencia
     public void deleteExperiencia(long id);

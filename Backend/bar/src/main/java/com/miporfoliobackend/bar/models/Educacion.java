@@ -10,11 +10,14 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity 
+
 public class Educacion {
 
     @Id
@@ -37,13 +40,13 @@ public class Educacion {
     
     private String eduImgUrl;
 
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prsId")
     private Persona persona;
+    
+    public Educacion(){
 
-
-    public Educacion() {
-     
     }
     
     public Educacion(long eduId, String eduTitulo, String eduDescripcion, int eduFechaInicio, int eduFechaFin,
@@ -54,6 +57,7 @@ public class Educacion {
         this.eduFechaInicio = eduFechaInicio;
         this.eduFechaFin = eduFechaFin;
         this.eduImgUrl = eduImgUrl;
+       
     }   
     
 

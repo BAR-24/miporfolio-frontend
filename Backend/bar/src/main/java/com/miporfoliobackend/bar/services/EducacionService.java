@@ -27,8 +27,8 @@ public class EducacionService implements IEducacionService{
     }
 
     @Override
-    public void saveEducacion(Educacion educacion) {
-        ieducacionRepository.save(educacion);
+    public Educacion saveEducacion(Educacion educacion) {
+       return ieducacionRepository.save(educacion);
         
     }
 

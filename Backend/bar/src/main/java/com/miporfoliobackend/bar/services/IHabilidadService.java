@@ -12,7 +12,7 @@ public interface IHabilidadService {
     public Habilidad findHabilidad(long id);
 
     //Guardar habilidad
-    public void saveHabilidad(Habilidad educacion);
+    public Habilidad saveHabilidad(Habilidad educacion);
 
     //Borra habilidad
     public void deleteHabilidad(long id);

@@ -12,7 +12,7 @@ public interface IPersonaService {
     public Persona findPersona(Long id);
 
     //Guardar Persona
-    public void savePersona(Persona persona);
+    public Persona savePersona(Persona persona);
 
     //Borra Persona
     public void deletePersona(Long id);

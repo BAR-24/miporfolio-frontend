@@ -27,8 +27,8 @@ public class ExperienciaService implements IExperienciaService{
     }
 
     @Override
-    public void saveExperiencia(Experiencia exp) {
-        iexpRepository.save(exp);
+    public Experiencia saveExperiencia(Experiencia exp) {
+        return iexpRepository.save(exp);
         
     }
 

@@ -27,8 +27,8 @@ public class HabilidadService implements IHabilidadService{
     }
 
     @Override
-    public void saveHabilidad(Habilidad exp) {
-        ihabRepository.save(exp);
+    public Habilidad saveHabilidad(Habilidad exp) {
+        return ihabRepository.save(exp);
         
     }
 

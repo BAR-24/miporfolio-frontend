@@ -47,9 +47,9 @@ public class HabilidadController {
 
     @PutMapping("/habilidad/editar")
     public ResponseEntity<Habilidad> editHabilidadStatus(@RequestBody Habilidad Habilidad){
-       iHabilidadService.saveHabilidad(Habilidad);             
+       Habilidad ediHab = iHabilidadService.saveHabilidad(Habilidad);             
        
-       return new ResponseEntity<>(Habilidad,HttpStatus.OK);     
+       return new ResponseEntity<>(ediHab,HttpStatus.OK);     
 
     }
 

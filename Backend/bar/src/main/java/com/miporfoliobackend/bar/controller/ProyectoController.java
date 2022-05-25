@@ -47,9 +47,9 @@ public class ProyectoController {
 
     @PutMapping("/proyecto/editar")
     public ResponseEntity<Proyecto> editProyectoStatus(@RequestBody Proyecto Proyecto){
-       iProyectoService.saveProyecto(Proyecto);             
+       Proyecto ediPro = iProyectoService.saveProyecto(Proyecto);             
        
-       return new ResponseEntity<>(Proyecto,HttpStatus.OK);     
+       return new ResponseEntity<>(ediPro,HttpStatus.OK);     
 
     }
 

@@ -36,14 +36,11 @@ public class PersonaController {
         return "Se creo persona con exito!";
     }
 
-    @PostMapping("/personas/editar")
-    public Persona editPersona(@RequestBody Persona persona){
-    
-        ipersonaService.savePersona(persona);
-        return persona;
-    }
-
-    
+    @PutMapping("/personas/editar")
+    public ResponseEntity<Persona> editPersona(@RequestBody Persona persona){
+        Persona ediPersona = ipersonaService.savePersona(persona);
+        return new ResponseEntity<>(ediPersona, HttpStatus.CREATED);
+    }    
 
     @PutMapping("/personas/editar/{id}")
     public Persona editPersona(@PathVariable Long id, 

@@ -44,14 +44,13 @@ public class ExperienciaController {
         return "Se elimino experiencia con exito";
     }
 
-    
-    @PutMapping("/experiencia/editar")
+    @PutMapping("/educacion/editar")
     public ResponseEntity<Experiencia> editExperienciaStatus(@RequestBody Experiencia exp){
-       iexperienciaService.saveExperiencia(exp);             
-       
-       return new ResponseEntity<>(exp,HttpStatus.OK);     
-
+        Experiencia editExp = iexperienciaService.saveExperiencia(exp);   
+         return new ResponseEntity<>(editExp, HttpStatus.CREATED);      
+          
     }
+ 
 
 
 }

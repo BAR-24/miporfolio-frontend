@@ -12,7 +12,7 @@ public interface IProyectoService {
     public Proyecto findProyecto(long id);
 
     //Guardar Proyecto
-    public void saveProyecto(Proyecto Proyecto);
+    public Proyecto saveProyecto(Proyecto Proyecto);
 
     //Borra Proyecto
     public void deleteProyecto(long id);

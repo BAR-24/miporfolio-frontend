@@ -12,7 +12,7 @@ public interface IEducacionService {
     public Educacion findEducacion(long id);
 
     //Guardar educacion
-    public void saveEducacion(Educacion educacion);
+    public Educacion saveEducacion(Educacion educacion);
 
     //Borra educacion
     public void deleteEducacion(long id);

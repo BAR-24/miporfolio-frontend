@@ -27,8 +27,8 @@ public class PersonaService implements IPersonaService{
     }
 
     @Override
-    public void savePersona(Persona persona) {
-        ipersonaRepository.save(persona);
+    public Persona savePersona(Persona persona) {
+        return ipersonaRepository.save(persona);
         
     }
 
