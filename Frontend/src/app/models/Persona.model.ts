@@ -1,3 +1,4 @@
+import { Educacion } from "./Educacion.model";
 
 export class Persona {
     prsid? : number;
@@ -8,7 +9,7 @@ export class Persona {
     prsAcercaDeMi : string;
     prsImgPerfilUrl : string;
     prsImgPortadaUrl : string;
-    listEdu : Array<any>;
+    listEdu : Array<Educacion>;
     listExp : Array<any>;
     listHab : Array<any>;
     listPro : Array<any>;

@@ -1,6 +1,6 @@
-<app-header></app-header>
+<app-header [persona]="persona"></app-header>
 <app-experiencia></app-experiencia>
-<app-educacion></app-educacion>
+<app-educacion [educaciones]="persona.listEdu"></app-educacion>
 <app-hardsoftskins></app-hardsoftskins>
 <app-proyectos></app-proyectos>
 <app-footer></app-footer>

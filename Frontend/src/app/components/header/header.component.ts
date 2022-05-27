@@ -1,7 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Persona } from 'src/app/models/Persona.model';
-import { PersonaService } from 'src/app/services/persona.service';
+
 
 @Component({
   selector: 'app-header',
@@ -9,21 +8,14 @@ import { PersonaService } from 'src/app/services/persona.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  public persona: Persona = new Persona("","",0,"","","","",[],[],[],[]);
+  @Input() persona: Persona = new Persona("","",0,"","","","",[],[],[],[]);
+ 
 
  
-  constructor(private personaService : PersonaService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    //this.personaService.getPersona().subscribe(data => {this.persona = data})
-    this.personaService.getPersona().subscribe({
-      next: (response: Persona) =>{
-        this.persona=response;
-      },
-      error:(error:HttpErrorResponse)=>{
-        alert(error.message);
-      }
-    })
+
 
   }
 
