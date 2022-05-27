@@ -1,7 +1,6 @@
 package com.miporfoliobackend.bar.models;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,14 +9,12 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter @Setter
+
 @Entity 
-
 public class Educacion {
 
     @Id
@@ -41,7 +38,7 @@ public class Educacion {
     private String eduImgUrl;
 
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "prsId")
     private Persona persona;
     
@@ -58,6 +55,63 @@ public class Educacion {
         this.eduFechaFin = eduFechaFin;
         this.eduImgUrl = eduImgUrl;
        
+    }
+
+    public long getEduId() {
+        return eduId;
+    }
+
+    public void setEduId(long eduId) {
+        this.eduId = eduId;
+    }
+
+    public String getEduTitulo() {
+        return eduTitulo;
+    }
+
+    public void setEduTitulo(String eduTitulo) {
+        this.eduTitulo = eduTitulo;
+    }
+
+    public String getEduDescripcion() {
+        return eduDescripcion;
+    }
+
+    public void setEduDescripcion(String eduDescripcion) {
+        this.eduDescripcion = eduDescripcion;
+    }
+
+    public int getEduFechaInicio() {
+        return eduFechaInicio;
+    }
+
+    public void setEduFechaInicio(int eduFechaInicio) {
+        this.eduFechaInicio = eduFechaInicio;
+    }
+
+    public int getEduFechaFin() {
+        return eduFechaFin;
+    }
+
+    public void setEduFechaFin(int eduFechaFin) {
+        this.eduFechaFin = eduFechaFin;
+    }
+
+    public String getEduImgUrl() {
+        return eduImgUrl;
+    }
+
+    public void setEduImgUrl(String eduImgUrl) {
+        this.eduImgUrl = eduImgUrl;
+    }
+
+    @JsonBackReference
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }   
     
 

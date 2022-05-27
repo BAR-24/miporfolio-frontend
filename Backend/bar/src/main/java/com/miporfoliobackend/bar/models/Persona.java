@@ -3,7 +3,9 @@ package com.miporfoliobackend.bar.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,11 +13,12 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
-@Getter @Setter
+
+
+
 @Entity 
 public class Persona {
 
@@ -45,16 +48,16 @@ public class Persona {
     private String prsImgPerfilUrl;
     private String prsImgPortadaUrl;
 
-    @OneToMany(mappedBy = "persona") 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY) 
     private List<Educacion> listEdu = new ArrayList<>();
 
-    @OneToMany(mappedBy = "persona") 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY) 
     private List<Experiencia> listExp = new ArrayList<>();
 
-    @OneToMany(mappedBy = "persona") 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<Habilidad> listHab = new ArrayList<>();
 
-    @OneToMany(mappedBy = "persona") 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     private List<Proyecto> listPro = new ArrayList<>();
 
   
@@ -72,6 +75,106 @@ public class Persona {
         this.prsAcercaDeMi = prsAcercaDeMi;
         this.prsImgPerfilUrl = prsImgPerfilUrl;
         this.prsImgPortadaUrl = prsImgPortadaUrl;
+    }
+
+    public Long getPrsId() {
+        return prsId;
+    }
+
+    public void setPrsId(Long prsId) {
+        this.prsId = prsId;
+    }
+
+    public String getPrsNombre() {
+        return prsNombre;
+    }
+
+    public void setPrsNombre(String prsNombre) {
+        this.prsNombre = prsNombre;
+    }
+
+    public String getPrsApellido() {
+        return prsApellido;
+    }
+
+    public void setPrsApellido(String prsApellido) {
+        this.prsApellido = prsApellido;
+    }
+
+    public int getPrsEdad() {
+        return prsEdad;
+    }
+
+    public void setPrsEdad(int prsEdad) {
+        this.prsEdad = prsEdad;
+    }
+
+    public String getPrsOcupacion() {
+        return prsOcupacion;
+    }
+
+    public void setPrsOcupacion(String prsOcupacion) {
+        this.prsOcupacion = prsOcupacion;
+    }
+
+    public String getPrsAcercaDeMi() {
+        return prsAcercaDeMi;
+    }
+
+    public void setPrsAcercaDeMi(String prsAcercaDeMi) {
+        this.prsAcercaDeMi = prsAcercaDeMi;
+    }
+
+    public String getPrsImgPerfilUrl() {
+        return prsImgPerfilUrl;
+    }
+
+    public void setPrsImgPerfilUrl(String prsImgPerfilUrl) {
+        this.prsImgPerfilUrl = prsImgPerfilUrl;
+    }
+
+    public String getPrsImgPortadaUrl() {
+        return prsImgPortadaUrl;
+    }
+
+    public void setPrsImgPortadaUrl(String prsImgPortadaUrl) {
+        this.prsImgPortadaUrl = prsImgPortadaUrl;
+    }
+
+    @JsonManagedReference
+    public List<Educacion> getListEdu() {
+        return listEdu;
+    }
+
+    public void setListEdu(List<Educacion> listEdu) {
+        this.listEdu = listEdu;
+    }
+
+    @JsonManagedReference
+    public List<Experiencia> getListExp() {
+        return listExp;
+    }
+
+    public void setListExp(List<Experiencia> listExp) {
+        this.listExp = listExp;
+    }
+
+    @JsonManagedReference
+    public List<Habilidad> getListHab() {
+        return listHab;
+    }
+
+    public void setListHab(List<Habilidad> listHab) {
+        this.listHab = listHab;
+    }
+
+    @JsonManagedReference
+    public List<Proyecto> getListPro() {
+        return listPro;
+    }
+
+    public void setListPro(List<Proyecto> listPro) {
+        this.listPro = listPro;
     }
    
   
