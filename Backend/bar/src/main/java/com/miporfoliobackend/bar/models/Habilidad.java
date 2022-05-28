@@ -28,7 +28,6 @@ public class Habilidad {
     private String habDescripcion;
 
     @NotNull
-    @Size(min = 1, max=3, message = "No cumple con los parametros de validacion") 
     private int habProcentaje;
 
     @ManyToOne

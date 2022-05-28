@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Habilidad } from 'src/app/models/habilidad.model';
 
 @Component({
   selector: 'app-hardsoftskins',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hardsoftskins.component.css']
 })
 export class HardsoftskinsComponent implements OnInit {
-
+  @Input() habilidades: Array<Habilidad> = new Array<Habilidad>();
   constructor() { }
 
   ngOnInit(): void {

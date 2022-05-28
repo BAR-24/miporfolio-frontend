@@ -31,17 +31,18 @@ public class HabilidadController {
     
         iHabilidadService.saveHabilidad(Habilidad);
         return "Se creo Habilidad con exito!";
-    }
-
-    @GetMapping("/habilidad/traer/{id}")
-    public Habilidad findHabilidad(@PathVariable("id") Long id){
-        return iHabilidadService.findHabilidad(id);
-    }
+    }    
 
     @DeleteMapping("/habilidad/borrar/{id}")
     public String deleteHabilidad(@PathVariable("id") Long id){
         iHabilidadService.deleteHabilidad(id);
         return "Se elimino Habilidad con exito";
+    }
+
+    @GetMapping("/habilidad/traer/{id}")
+    public ResponseEntity<Habilidad> findPersona(@PathVariable("id") Long id){
+             Habilidad hab =  iHabilidadService.findHabilidad(id);
+             return new ResponseEntity<>(hab, HttpStatus.OK);        
     }
 
 

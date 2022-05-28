@@ -43,7 +43,7 @@ public class PersonaController {
     }    
 
     @PutMapping("/personas/editar/{id}")
-    public Persona editPersona(@PathVariable Long id, 
+    public Persona editPersona(@PathVariable("id") Long id, 
     @RequestParam("prsNombre") String nuevoNombre,
     @RequestParam("prsApellido") String nuevoApellido,
     @RequestParam("prsEdad") String nuevoEdad,

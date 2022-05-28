@@ -1,7 +1,7 @@
 <app-header [persona]="persona"></app-header>
-<app-experiencia></app-experiencia>
+<app-experiencia [experiencias]="persona.listExp"></app-experiencia>
 <app-educacion [educaciones]="persona.listEdu"></app-educacion>
-<app-hardsoftskins></app-hardsoftskins>
-<app-proyectos></app-proyectos>
+<app-hardsoftskins [habilidades]="persona.listHab"></app-hardsoftskins>
+<app-proyectos [proyectos]="persona.listPro"></app-proyectos>
 <app-footer></app-footer>
 

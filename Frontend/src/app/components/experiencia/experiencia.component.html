@@ -1,17 +1,25 @@
 <div class="card m-3">
      <div class="card-header text-center">
-          <h2>EXPERIENCIA</h2>
+          <h2>EDUCACION</h2>
      </div> 
      <div class="card-body">                                          
-          <div class="card-text col-xs-12 col-sm-12 col-md-12 col-lg-12">              
-               <ul >
-                    <li> 
-                         <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborio </p>               
-                    </li>
-                    <li> 
-                         <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborio </p>
-                    </li>
-               </ul>
+          <div class="card-text col-xs-12 col-sm-12 col-md-12 col-lg-12">                            
+                         <div class="row" *ngFor="let exp of experiencias">
+                              <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-center "> 
+                                   <img class="img-responsive imgedu" src={{exp.expImgUrl}} alt="">
+                              </div>
+                              <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                   <div class="row">
+                                        <h1>{{exp.expTitulo}}</h1>
+                                   </div>
+                                   <div class="row">
+                                        <p>{{exp.expDescripcion}}</p>
+                                   </div>
+                                   <div class="row">
+                                        <p>{{exp.expFechaInicio}} - {{exp.expFechaFin}}</p>
+                                   </div>     
+                              </div>   
+                         </div>                                                     
           </div>
      </div>           
 </div> 

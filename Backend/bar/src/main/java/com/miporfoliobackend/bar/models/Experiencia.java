@@ -31,11 +31,9 @@ public class Experiencia {
     private String expDescripcion;  
 
     @NotNull
-    @Size(min = 1, max=4, message = "No cumple con los parametros de validacion")
     private int expFechaInicio; 
     
     @NotNull
-    @Size(min = 1, max=4, message = "No cumple con los parametros de validacion")
     private int expFechaFin;
    
     private String expImgUrl;
