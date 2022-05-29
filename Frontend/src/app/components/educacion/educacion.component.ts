@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Educacion } from 'src/app/models/Educacion.model';
 import { EducacionService } from 'src/app/services/educacion.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-educacion',
@@ -11,13 +12,23 @@ import { EducacionService } from 'src/app/services/educacion.service';
 })
 export class EducacionComponent implements OnInit {
     @Input() educaciones: Array<Educacion> = new Array<Educacion>();
+  
+  
+
     public editEdu: Educacion | undefined;
     public delEdu: Educacion | undefined;
     
-    constructor(private educacionService:EducacionService) { }
+    constructor(private educacionService:EducacionService) { 
+     // if(this.prsId != undefined){
+       //  this.personaId = '{"prsId":'+ this.prsId +'}';
+      //}
+
+    }
 
     ngOnInit(): void {
-
+       
+        
+    
     }
 
     public onOpenModal(mode:String,edu?:Educacion):void {
@@ -32,7 +43,8 @@ export class EducacionComponent implements OnInit {
 
         }else if(mode==='editar')
         {
-          this.editEdu=edu;
+         
+          this.editEdu=edu;          
           button.setAttribute('data-target','#editEducacionModal');
 
         }else if(mode==='borrar')
@@ -46,8 +58,9 @@ export class EducacionComponent implements OnInit {
     
     }
   
-    public onAgregarEdu(addForm: NgForm){
+    public onAgregarEdu(addForm: NgForm){      
       document.getElementById('agregar-edu-form')?.click();
+      addForm.control.patchValue({'persona': environment.prsId});
       this.educacionService.agregarEducacion(addForm.value).subscribe({
         next: (response: Educacion)=>{ 
           console.log(response)
@@ -62,6 +75,7 @@ export class EducacionComponent implements OnInit {
     }
     
     public onEditarEdu(edu: Educacion){
+      
       this.editEdu=edu;
       document.getElementById('editar-edu-form')?.click();
       this.educacionService.editarEducacion(edu).subscribe({

@@ -1,5 +1,6 @@
 package com.miporfoliobackend.bar.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +39,7 @@ public class Experiencia {
    
     private String expImgUrl;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "prsId")
     private Persona persona;
 

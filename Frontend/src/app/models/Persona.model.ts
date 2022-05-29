@@ -1,7 +1,7 @@
 import { Educacion } from "./Educacion.model";
 
 export class Persona {
-    prsid? : number;
+    prsId? : number;
     prsNombre : string; 
     prsApellido : string;
     prsEdad : number;
@@ -16,9 +16,10 @@ export class Persona {
    
 
 
-    constructor (nombre: string, apellido: string, edad: number, ocupacion: string,
+    constructor (prsId: number,nombre: string, apellido: string, edad: number, ocupacion: string,
         _acercaDeMi: string,_imgPerfil: string, _imgPortada: string,
          listEdu: Array<any>,listExp: Array<any>,listHab: Array<any>,listPro: Array<any>){
+            this.prsId = prsId; 
             this.prsNombre = nombre;
             this.prsApellido = apellido;
             this.prsEdad = edad;

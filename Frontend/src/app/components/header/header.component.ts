@@ -8,7 +8,7 @@ import { Persona } from 'src/app/models/Persona.model';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Input() persona: Persona = new Persona("","",0,"","","","",[],[],[],[]);
+  @Input() persona: Persona = new Persona(0,"","",0,"","","","",[],[],[],[]);
  
 
  
