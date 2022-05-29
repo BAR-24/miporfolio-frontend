@@ -1,28 +1,84 @@
 <div class="card m-3">
-     <div class="card-header text-center">
-          <h2>EDUCACION</h2>
+     <div class="card-header divtitle text-center">
+          <div class="row ">
+               <div class=" divtitle col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <h2>EDUCACION</h2>
+               </div>        
+               <div class=" divtitle col-xs-2 col-sm-2 col-md-2 col-lg-2 pe-0 text-center">
+                    <button type="button" class="btn btn-success" (click)="onOpenModal('agregrar')">
+                           <a class="nav-link " style="color:aliceblue"> Agregar Educacion <span class="sr-only">(current)</span></a>
+                    </button>               
+               </div>
+          </div>
      </div> 
      <div class="card-body">                                          
-          <div class="card-text col-xs-12 col-sm-12 col-md-12 col-lg-12">                            
-                         <div class="row" *ngFor="let edu of educaciones">
-                              <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-center "> 
-                                   <img class="img-responsive imgedu" src={{edu.eduImgUrl}} alt="">
-                              </div>
-                              <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-                                   <div class="row">
+          <div  class="card-text col-xs-12 col-sm-12 col-md-12 col-lg-12">                            
+              <div id="main-container"> 
+                    <div class="row" *ngFor="let edu of educaciones">                              
+                         <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-center "> 
+                              <img class="img-responsive imgedu" src={{edu.eduImgUrl}} alt="">
+                         </div>
+                         <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                              <div class="row">
+                                   <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                                         <h1>{{edu.eduTitulo}}</h1>
                                    </div>
-                                   <div class="row">
-                                        <p>{{edu.eduDescripcion}}</p>
+                                   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 pt-1">
+                                        <a (click)="onOpenModal('editar',edu)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
+                                   
+                                        <a (click)="onOpenModal('borrar',edu)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash"></i></a>
                                    </div>
-                                   <div class="row">
-                                        <p>{{edu.eduFechaInicio}} - {{edu.eduFechaFin}}</p>
-                                   </div>     
-                              </div>   
-                         </div>                                                     
+                              </div>
+                              <div class="row">
+                                   <p>{{edu.eduDescripcion}}</p>
+                              </div>
+                              <div class="row">
+                                   <p>{{edu.eduFechaInicio}} - {{edu.eduFechaFin}}</p>
+                              </div>     
+                         </div>   
+                    </div>      
+              </div> <!-- Main - container -->                                                   
           </div>
      </div>           
 </div> 
-  
 
-
+ 
+<!-- Modal -->
+<div  class="modal fade" id="agrEducacionModal"  tabindex="-1" role="dialog" aria-labelledby="AgregrarEducacionModalLabel" aria-hidden="true">
+     <div id="MiModal" class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+                  <h5 class="modal-title" id="AgregrarEducacionModalLabel">Agregar Educacion</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+         </div>
+         <div class="modal-body">
+               <form #addForm="ngForm" (ngSubmit)="onAgregarEdu(addForm)">
+                    <div class="form-group">
+                         <label for="eduTitulo">Titulo</label>
+                         <input type="text" ngModel name="eduTitulo" id="eduTitulo" class="form-control" placeholder="Titulo" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="eduDescripcion">Descripcion</label>
+                         <input type="text" ngModel name="eduDescripcion" id="eduDescripcion" class="form-control" placeholder="Descripcion" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="eduFechaInicio">Fecha Inicio</label>
+                         <input type="text" ngModel name="eduFechaInicio" id="eduFechaInicio" class="form-control" placeholder="Fecha Inicio" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="eduFechaFin">Fecha Fin</label>
+                         <input type="text" ngModel name="eduFechaFin" id="eduFechaFin" class="form-control" placeholder="Fecha Fin" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="eduImgUrl">Link imagen</label>
+                         <input type="text" ngModel name="eduImgUrl" id="eduImgUrl" class="form-control" placeholder="Url imagen" required>
+                    </div>
+               </form>               
+         </div>
+         <div class="modal-footer">
+                  <button type="button" id="agregar-edu-form" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button [disabled]="addForm.invalid" (click)="onAgregarEdu(addForm)" type="submit" class="btn btn-primary">Agregar</button>
+         </div>
+       </div>
+     </div>
+</div>

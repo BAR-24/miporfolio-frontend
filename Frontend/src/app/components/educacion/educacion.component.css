@@ -4,4 +4,15 @@
    height: 120px;
    padding-top: 10px;
 }
-    
+
+.btn {
+   padding-top: 10px;
+}
+
+.divtitle {
+   background-color: #e9ecef;
+}
+
+#agrEducacionModal {
+   background-color: transparent !important;
+}

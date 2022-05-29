@@ -1,25 +1,39 @@
 <div class="card m-3">
-     <div class="card-header text-center">
-          <h2>EDUCACION</h2>
-     </div> 
+     <div class="card-header divtitle text-center">
+          <div class="row ">
+               <div class=" divtitle col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <h2>EXPERIENCIA</h2>
+               </div>        
+               <div class=" divtitle col-xs-2 col-sm-2 col-md-2 col-lg-2 pe-0">
+                    <a class="btn btn-primary tooltips " data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-plus"></i></a>
+               </div>
+          </div>
+     </div>  
      <div class="card-body">                                          
           <div class="card-text col-xs-12 col-sm-12 col-md-12 col-lg-12">                            
-                         <div class="row" *ngFor="let exp of experiencias">
-                              <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-center "> 
-                                   <img class="img-responsive imgedu" src={{exp.expImgUrl}} alt="">
+               <div class="row" *ngFor="let exp of experiencias">
+                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-center "> 
+                         <img class="img-responsive imgexp" src={{exp.expImgUrl}} alt="">
+                    </div>
+                    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                         <div class="row">
+                              <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                   <h1>{{exp.expTitulo}}</h1>
                               </div>
-                              <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-                                   <div class="row">
-                                        <h1>{{exp.expTitulo}}</h1>
-                                   </div>
-                                   <div class="row">
-                                        <p>{{exp.expDescripcion}}</p>
-                                   </div>
-                                   <div class="row">
-                                        <p>{{exp.expFechaInicio}} - {{exp.expFechaFin}}</p>
-                                   </div>     
-                              </div>   
-                         </div>                                                     
+                              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 pt-1">
+                                   <a class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
+                              
+                                   <a class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+                              </div>
+                         </div>
+                         <div class="row">
+                              <p>{{exp.expDescripcion}}</p>
+                         </div>
+                         <div class="row">
+                              <p>{{exp.expFechaInicio}} - {{exp.expFechaFin}}</p>
+                         </div>     
+                    </div>   
+               </div>                                                     
           </div>
      </div>           
 </div> 
