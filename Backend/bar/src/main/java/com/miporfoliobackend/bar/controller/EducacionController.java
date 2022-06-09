@@ -28,6 +28,11 @@ public class EducacionController {
         return ieducacionService.getTodas();
     }
 
+    @GetMapping("/educacion/traerporprs/{prsId}")
+    public List<Educacion> getTodasByPrsId(@PathVariable("prsId") Long prsId){
+        return ieducacionService.getTodasByPrsId(prsId);
+    }
+
     @PostMapping("/educacion/crear")
     public String crearEducacion(@RequestBody Educacion educacion){
     

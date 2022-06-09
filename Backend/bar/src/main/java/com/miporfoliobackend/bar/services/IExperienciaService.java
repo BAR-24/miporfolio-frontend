@@ -7,6 +7,9 @@ import com.miporfoliobackend.bar.models.Experiencia;
 public interface IExperienciaService {
     //Traer experiencias
     public List<Experiencia> getTodas();
+
+    //Traer experiencias por prs
+    public List<Experiencia> getTodasByPrsId(Long prsId);
     
     //Traer experiencia
     public Experiencia findExperiencia(long id);

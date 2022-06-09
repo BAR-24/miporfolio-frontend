@@ -21,6 +21,12 @@ public class ExperienciaService implements IExperienciaService{
     }
 
     @Override
+    public List<Experiencia> getTodasByPrsId(Long prsId) {
+        List<Experiencia> listEducacion = iexpRepository.findAllByPersona(prsId);
+        return listEducacion;
+    }
+
+    @Override
     public Experiencia findExperiencia(long id) {
         return iexpRepository.findById(id).orElse(null);
 

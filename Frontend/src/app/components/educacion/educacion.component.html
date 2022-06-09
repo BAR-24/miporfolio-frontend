@@ -6,7 +6,7 @@
                </div>        
                <div class=" divtitle col-xs-2 col-sm-2 col-md-2 col-lg-2 pe-0 text-center">
                     <button type="button" class="btn btn-success" (click)="onOpenModal('agregrar')">
-                           <a class="nav-link " style="color:aliceblue"> Agregar Educacion <span class="sr-only">(current)</span></a>
+                           <a class="nav-link " style="color:aliceblue"> Agregar <span class="sr-only">(current)</span></a>
                     </button>               
                </div>
           </div>
@@ -45,16 +45,16 @@
  
 <!-- Modal AGREGAR-->
 <div  class="modal fade" id="agrEducacionModal"  tabindex="-1" role="dialog" aria-labelledby="AgregrarEducacionModalLabel" aria-hidden="true">
-     <div id="MiModal" class="modal-dialog" role="document">
+     <div class="modal-dialog" role="document">
        <div class="modal-content">
          <div class="modal-header">
                   <h5 class="modal-title" id="AgregrarEducacionModalLabel">Agregar Educacion</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
          </div>
          <div class="modal-body">
-               <form #addForm="ngForm" >
+               <form #addForm="ngForm"  >
                     <div class="form-group">                      
-                         <input type="hidden" ngModel value="" name="persona" id="persona" class="form-control" placeholder="">
+                         <input type="hidden" ngModel name="persona" id="persona" class="form-control" placeholder="">
                     </div>
                     <div class="form-group">
                          <label for="eduTitulo">Titulo</label>
@@ -79,28 +79,29 @@
                </form>               
          </div>
          <div class="modal-footer">
-                  <button type="button" id="agregar-edu-form" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" id="agregar-edu-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                   <button [disabled]="addForm.invalid" (click)="onAgregarEdu(addForm)" type="submit" class="btn btn-primary">Agregar</button>
          </div>
        </div>
      </div>
 </div>
 
-<!-- Modal EDITAR-->
+<!-- Modal Editar-->
 <div  class="modal fade" id="editEducacionModal"  tabindex="-1" role="dialog" aria-labelledby="EditarEducacionModalLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
        <div class="modal-content">
          <div class="modal-header">
-                  <h5 class="modal-title" id="EditarEducacionModalLabel">
-                       Editar Educacion {{ editEdu?.eduTitulo }}
-                  </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                  <h5 class="modal-title" id="EditarEducacionModalLabel">Agregar Educacion</h5>
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
          </div>
          <div class="modal-body">
-               <form #editForm="ngForm">
+               <form #editForm="ngForm"  >
+                    <div class="form-group">                      
+                         <input type="hidden" ngModel name="persona" id="persona" class="form-control" placeholder="">
+                    </div>
                     <div class="form-group">
-                         <label for="eduTitulo">Educacion ID: {{editEdu?.eduId}} </label>
-                         <input type="hidden" ngModel="{{editEdu?.eduId}}" name="eduId" id="eduId" class="form-control" placeholder="">
+                         <label for="eduId">Educacion ID</label>
+                         <input type="text" readonly="true" ngModel="{{editEdu?.eduId}}" name="eduId" id="eduId" class="form-control" placeholder="Titulo" required>
                     </div>
                     <div class="form-group">
                          <label for="eduTitulo">Titulo</label>
@@ -108,7 +109,7 @@
                     </div>
                     <div class="form-group">
                          <label for="eduDescripcion">Descripcion</label>
-                         <input type="text" ngModel="{{editEdu?.eduDescripcion}}"name="eduDescripcion" id="eduDescripcion" class="form-control" placeholder="Descripcion" required>
+                         <input type="text" ngModel="{{editEdu?.eduDescripcion}}" name="eduDescripcion" id="eduDescripcion" class="form-control" placeholder="Descripcion" required>
                     </div>
                     <div class="form-group">
                          <label for="eduFechaInicio">Fecha Inicio</label>
@@ -125,9 +126,32 @@
                </form>               
          </div>
          <div class="modal-footer">
-                  <button type="button" id="editar-edu-form" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button [disabled]="editForm.invalid" (click)="onEditarEdu(editForm.value)" type="submit" class="btn btn-primary">Agregar</button>
+                  <button type="button" id="editar-edu-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button (click)="onEditarEdu(editForm)" type="submit" class="btn btn-primary">Editar</button>
          </div>
        </div>
      </div>
 </div>
+
+<!-- Modal Borrar-->
+<div  class="modal fade" id="borrEducacionModal"  tabindex="-1" role="dialog" aria-labelledby="BorrarEducacionModalLabel" aria-hidden="true">
+     <div  class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+                  <h5 class="modal-title" id="BorrarEducacionModalLabel">Agregar Educacion</h5>
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+         </div>
+         <div class="modal-body">
+               <p>
+                    Esta seguro de borrar la educacion:
+                    {{delEdu?.eduTitulo}}
+               </p>              
+         </div>
+         <div class="modal-footer">
+                  <button type="button" id="borrar-edu-form" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                  <button (click)="onBorrarEdu(delEdu?.eduId)" type="submit" class="btn btn-primary">SI</button>
+         </div>
+       </div>
+     </div>
+</div>
+

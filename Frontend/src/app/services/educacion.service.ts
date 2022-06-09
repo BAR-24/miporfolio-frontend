@@ -13,18 +13,22 @@ export class EducacionService {
 
   constructor(private http: HttpClient) { }
 
-  public traerTodas(): Observable<Educacion>{
-    return this.http.get<Educacion>(`${this.URL}/educacion/traer`);
+  public traerTodas(): Observable<Educacion[]>{
+    return this.http.get<Educacion[]>(`${this.URL}/educacion/traer`);
   } 
-  public agregarEducacion(edu:Educacion): Observable<Educacion>{
-    return this.http.post<Educacion>(`${this.URL}/educacion/crear`,edu);
+
+  public traerTodasByPersona(prsId?:number): Observable<Educacion[]>{
+    return this.http.get<Educacion[]>(`${this.URL}/educacion/traerporprs/${prsId}`);
+  } 
+  public agregarEducacion(edu:Educacion): Observable<any>{
+    return this.http.post(`${this.URL}/educacion/crear`,edu, {responseType:'text'});
   }
 
-  public editarEducacion(edu:Educacion): Observable<Educacion>{
-    return this.http.put<Educacion>(`${this.URL}/educacion/editar`,edu);
+  public editarEducacion(edu:Educacion): Observable<any>{
+    return this.http.put(`${this.URL}/educacion/editar`,edu, {responseType: 'text'});
   }
-  public borrarEducacion(eduId:number): Observable<void>{
-    return this.http.delete<void>(`${this.URL}/educacion/borrar/${eduId}`);
+  public borrarEducacion(eduId?:number): Observable<any>{
+    return this.http.delete(`${this.URL}/educacion/borrar/${eduId}`, {responseType: 'text'});
   }
 
 }

@@ -28,6 +28,11 @@ public class ExperienciaController {
         return iexperienciaService.getTodas();
     }
 
+    @GetMapping("/experiencia/traerporprs/{prsId}")
+    public List<Experiencia> getTodasByPrsId(@PathVariable("prsId") Long prsId){
+        return iexperienciaService.getTodasByPrsId(prsId);
+    }
+
     @PostMapping("/experiencia/crear")
     public String crearExperiencia(@RequestBody Experiencia exp){
     

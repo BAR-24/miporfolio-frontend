@@ -12,3 +12,14 @@
     background-color: #e9ecef;
  }
 
+ #agrExperienciaModal {
+   background-color: transparent !important;
+}
+
+#editExperienciaModal {
+   background-color: transparent !important;
+}
+
+#borrExperienciaModal {
+   background-color: transparent !important;
+}

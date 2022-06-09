@@ -3,7 +3,6 @@ package com.miporfoliobackend.bar.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -48,16 +47,16 @@ public class Persona {
     private String prsImgPerfilUrl;
     private String prsImgPortadaUrl;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY) 
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY) 
     private List<Educacion> listEdu = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY) 
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY) 
     private List<Experiencia> listExp = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     private List<Habilidad> listHab = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     private List<Proyecto> listPro = new ArrayList<>();
 
   

@@ -1,5 +1,5 @@
 package com.miporfoliobackend.bar.models;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +31,7 @@ public class Habilidad {
     @NotNull
     private int habProcentaje;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "prsId")
     private Persona persona;
    

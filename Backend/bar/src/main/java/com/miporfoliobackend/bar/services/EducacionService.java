@@ -2,6 +2,7 @@ package com.miporfoliobackend.bar.services;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Service;
 import com.miporfoliobackend.bar.models.Educacion;
 
@@ -18,10 +19,17 @@ public class EducacionService implements IEducacionService{
     public List<Educacion> getTodas() {
         List<Educacion> listEducacion = ieducacionRepository.findAll();
         return listEducacion;
+    }  
+    
+    @Override
+    public List<Educacion> getTodasByPrsId(Long prsId) {
+        List<Educacion> listEducacion = ieducacionRepository.findAllByPersona(prsId);
+        return listEducacion;
     }
+ 
 
     @Override
-    public Educacion findEducacion(long id) {
+    public Educacion findEducacion(Long id) {
         return ieducacionRepository.findById(id).orElse(null);
 
     }
@@ -33,9 +41,24 @@ public class EducacionService implements IEducacionService{
     }
 
     @Override
-    public void deleteEducacion(long id) {
+    public void deleteEducacion(Long id) {
         ieducacionRepository.deleteById(id);
         
     }
+
+
+
+    
+
+
+
+    
+
+
+    
+
+
+
+   
     
 }

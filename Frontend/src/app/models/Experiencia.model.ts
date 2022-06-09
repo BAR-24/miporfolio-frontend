@@ -1,5 +1,5 @@
 export class Experiencia {
-    expid? : number;
+    expId? : number;
     expTitulo : string; 
     expDescripcion : string;
     expFechaInicio : number;
