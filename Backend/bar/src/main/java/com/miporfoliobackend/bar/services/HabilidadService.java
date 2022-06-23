@@ -19,6 +19,12 @@ public class HabilidadService implements IHabilidadService{
         List<Habilidad> listExp = ihabRepository.findAll();
         return listExp;
     }
+    
+    @Override
+    public List<Habilidad> getTodasByPrsId(Long prsId) {
+        List<Habilidad> listProyectos = ihabRepository.findAllByPersona(prsId);
+        return listProyectos;
+    }
 
     @Override
     public Habilidad findHabilidad(long id) {

@@ -1,0 +1,19 @@
+.btn {
+    padding-top: 10px;
+ }
+ 
+ .divtitle {
+    background-color: #e9ecef;
+ }
+
+ #agrHabilidadModal {
+   background-color: transparent !important;
+}
+
+#editHabilidadModal {
+   background-color: transparent !important;
+}
+
+#borrHabilidadModal {
+   background-color: transparent !important;
+}

@@ -1,11 +1,8 @@
 export class Habilidad {
-    habid? : number;
+    habId? : number;
     habTitulo : string; 
     habDescripcion : string;
     habPorcentaje : number;
- 
-
-
 
 
     constructor (habTitulo: string, habDescripcion: string, habPorcentaje: number){

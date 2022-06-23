@@ -1,23 +1,136 @@
 <div class="card m-3">
-    <div class="card-header text-center">
-        <h2>HARD & SOFT SKINS</h2>
-   </div> 
+    <div class="card-header divtitle text-center">
+        <div class="row ">
+             <div class=" divtitle col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                  <h2>HARD & SOFT SKINS</h2>
+             </div>        
+             <div class=" divtitle col-xs-2 col-sm-2 col-md-2 col-lg-2 pe-0">
+                  <button type="button" class="btn btn-success" (click)="onOpenModal('agregrar')">
+                       <a class="nav-link " style="color:aliceblue"> Agregar <span class="sr-only">(current)</span></a>
+                  </button>
+             </div>
+        </div>
+    </div>  
+    
     <div class="card-body">
         <div class="row" >   
             <div class="col-xs-12 col-ms-4 col-md-4 col-lg-4 text-center" *ngFor="let hab of habilidades">   
-                <circle-progress
-                [percent]="hab.habPorcentaje"
-                [radius]="100"
-                [showUnits]="false"
-                [title]="hab.habTitulo"
-                [outerStrokeWidth]="16"
-                [innerStrokeWidth]="8"
-                [outerStrokeColor]="'blue'"
-                [innerStrokeColor]="'#C7E596'"
-                [animation]="true"
-                [animationDuration]="300">
-                </circle-progress>
+                <div class="d-inline col-xs-2 col-sm-2 col-md-2 col-lg-2 pt-1" >
+                    <a (click)="onOpenModal('editar',hab)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
+                    
+                    <a (click)="onOpenModal('borrar',hab)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+                </div> 
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-1">                  
+                    <circle-progress
+                    [percent]="hab.habPorcentaje"
+                    [radius]="100"
+                    [showUnits]="false"
+                    [title]="hab.habTitulo"
+                    [outerStrokeWidth]="16"
+                    [innerStrokeWidth]="8"
+                    [outerStrokeColor]="'blue'"
+                    [innerStrokeColor]="'#C7E596'"
+                    [animation]="true"
+                    [animationDuration]="300">
+                    </circle-progress>
+               </div>
             </div>           
         </div> <!--row-->
     </div>   
+</div>
+
+<!-- Modal AGREGAR-->
+<div  class="modal fade" id="agrHabilidadModal"  tabindex="-1" role="dialog" aria-labelledby="AgregrarHabilidadModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+                 <h5 class="modal-title" id="AgregrarHabilidadModalLabel">Agregar Habilidad</h5>
+                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+        </div>
+        <div class="modal-body">
+              <form #addForm="ngForm"  >
+                   <div class="form-group">                      
+                        <input type="hidden" ngModel name="persona" id="persona" class="form-control" placeholder="">
+                   </div>
+                   <div class="form-group">
+                        <label for="habTitulo">Titulo</label>
+                        <input type="text" ngModel name="habTitulo" id="habTitulo" class="form-control" placeholder="Titulo" required>
+                   </div>
+                   <div class="form-group">
+                        <label for="habDescripcion">Descripcion</label>
+                        <input type="text" ngModel name="habDescripcion" id="habDescripcion" class="form-control" placeholder="Descripcion" required>
+                   </div>        
+                   <div class="form-group">
+                        <label for="habPorcentaje">Porcentaje</label>
+                        <input type="text" ngModel name="habPorcentaje" id="habPorcentaje" class="form-control" placeholder="habPorcentaje" required>
+                   </div>
+              </form>               
+        </div>
+        <div class="modal-footer">
+                 <button type="button" id="agregar-hab-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                 <button [disabled]="addForm.invalid" (click)="onAgregarHab(addForm)" type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Editar-->
+<div  class="modal fade" id="editHabilidadModal"  tabindex="-1" role="dialog" aria-labelledby="EditarHabilidadModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+                 <h5 class="modal-title" id="EditarHabilidadModalLabel">Agregar Habilidad</h5>
+                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+        </div>
+        <div class="modal-body">
+              <form #editForm="ngForm"  >
+                   <div class="form-group">                      
+                        <input type="hidden" ngModel name="persona" id="persona" class="form-control" placeholder="">
+                   </div>
+                   <div class="form-group">
+                        <label for="habId">Habilidad ID</label>
+                        <input type="text" readonly="true" ngModel="{{editHab?.habId}}" name="habId" id="expId" class="form-control" placeholder="Titulo" required>
+                   </div>
+                   <div class="form-group">
+                        <label for="habTitulo">Titulo</label>
+                        <input type="text" ngModel="{{editHab?.habTitulo}}" name="habTitulo" id="habTitulo" class="form-control" placeholder="Titulo" required>
+                   </div>
+                   <div class="form-group">
+                        <label for="habDescripcion">Descripcion</label>
+                        <input type="text" ngModel="{{editHab?.habDescripcion}}" name="habDescripcion" id="habDescripcion" class="form-control" placeholder="Descripcion" required>
+                   </div>           
+                   <div class="form-group">
+                        <label for="habPorcentaje">Porcentaje</label>
+                        <input type="text" ngModel="{{editHab?.habPorcentaje}}" name="habPorcentaje" id="habPorcentaje" class="form-control" placeholder="Porcentaje" required>
+                   </div>
+              </form>               
+        </div>
+        <div class="modal-footer">
+                 <button type="button" id="editar-hab-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                 <button (click)="onEditarHab(editForm)" type="submit" class="btn btn-primary" data-dismiss="modal">Editar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Borrar-->
+<div  class="modal fade" id="borrHabilidadModal"  tabindex="-1" role="dialog" aria-labelledby="BorrarHabilidadModalLabel" aria-hidden="true">
+    <div  class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+                 <h5 class="modal-title" id="BorrarHabilidadModalLabel">Borrar Habilidad</h5>
+                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+        </div>
+        <div class="modal-body">
+              <p>
+                   Esta seguro de borrar la Habilidad:
+                   {{delHab?.habTitulo}}
+              </p>              
+        </div>
+        <div class="modal-footer">
+                 <button type="button" id="borrar-hab-form" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                 <button (click)="onBorrarHab(delHab?.habId)" type="submit" class="btn btn-primary" data-dismiss="modal">SI</button>
+        </div>
+      </div>
+    </div>
 </div>

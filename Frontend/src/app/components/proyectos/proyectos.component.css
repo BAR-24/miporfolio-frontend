@@ -11,3 +11,15 @@
  .divtitle {
     background-color: #e9ecef;
  }
+
+ #agrProyectoModal {
+   background-color: transparent !important;
+}
+
+#editProyectoModal {
+   background-color: transparent !important;
+}
+
+#borrProyectoModal {
+   background-color: transparent !important;
+}

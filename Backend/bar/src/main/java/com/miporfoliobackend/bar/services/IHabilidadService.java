@@ -8,6 +8,8 @@ public interface IHabilidadService {
     //Traer hablidades
     public List<Habilidad> getTodas();
     
+    public List<Habilidad> getTodasByPrsId(Long prsId);
+
     //Traer habilidad
     public Habilidad findHabilidad(long id);
 

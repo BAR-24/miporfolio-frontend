@@ -28,6 +28,11 @@ public class ProyectoController {
         return iProyectoService.getProyectos();
     }
 
+    @GetMapping("/proyecto/traerporprs/{prsId}")
+    public List<Proyecto> getTodasByPrsId(@PathVariable("prsId") Long prsId){
+        return iProyectoService.getTodasByPrsId(prsId);
+    }
+
     @PostMapping("/proyecto/crear")
     public String crearProyecto(@RequestBody Proyecto Proyecto){
     

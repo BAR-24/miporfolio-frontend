@@ -125,7 +125,7 @@
          </div>
          <div class="modal-footer">
                   <button type="button" id="editar-exp-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                  <button (click)="onEditarExp(editForm)" type="submit" class="btn btn-primary">Editar</button>
+                  <button (click)="onEditarExp(editForm)" type="submit" class="btn btn-primary" data-dismiss="modal">Editar</button>
          </div>
        </div>
      </div>
@@ -136,7 +136,7 @@
      <div  class="modal-dialog" role="document">
        <div class="modal-content">
          <div class="modal-header">
-                  <h5 class="modal-title" id="BorrarExperienciaModalLabel">Agregar Experiencia</h5>
+                  <h5 class="modal-title" id="BorrarExperienciaModalLabel">Borrar Experiencia</h5>
                   <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
          </div>
          <div class="modal-body">
@@ -147,7 +147,7 @@
          </div>
          <div class="modal-footer">
                   <button type="button" id="borrar-exp-form" class="btn btn-secondary" data-dismiss="modal">NO</button>
-                  <button (click)="onBorrarExp(delExp?.expId)" type="submit" class="btn btn-primary">SI</button>
+                  <button (click)="onBorrarExp(delExp?.expId)" type="submit" class="btn btn-primary" data-dismiss="modal">SI</button>
          </div>
        </div>
      </div>

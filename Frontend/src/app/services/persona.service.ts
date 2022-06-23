@@ -16,4 +16,8 @@ export class PersonaService {
   public getPersona(): Observable<Persona>{
     return this.http.get<Persona>(`${this.URL}/personas/traer/1`);
   } 
+
+  public editarPersona(prs:Persona): Observable<any>{
+    return this.http.put(`${this.URL}/persona/editar`,prs, {responseType: 'text'});
+  }
 }

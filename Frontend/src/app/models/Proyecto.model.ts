@@ -1,5 +1,5 @@
 export class Proyecto {
-    proid? : number;
+    proId? : number;
     proTitulo : string; 
     proDescripcion : string;
     proFechaInicio : number;

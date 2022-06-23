@@ -11,7 +11,7 @@ import { RedesComponent } from './components/redes/redes.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { HardsoftskinsComponent } from './components/hardsoftskins/hardsoftskins.component';
-import { ProyectosComponent } from './components/proyectos/proyectos.component';
+import { ProyectoComponent } from './components/proyectos/proyectos.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -27,7 +27,7 @@ import { HomeComponent } from './components/home/home.component';
     RedesComponent,
     NavComponent,
     HardsoftskinsComponent,
-    ProyectosComponent,
+    ProyectoComponent,
     FooterComponent,
     HomeComponent
   ],

@@ -7,6 +7,8 @@ import com.miporfoliobackend.bar.models.Proyecto;
 public interface IProyectoService {
     //Traer Proyectos
     public List<Proyecto> getProyectos();
+
+    public List<Proyecto> getTodasByPrsId(Long prsId);
     
     //Traer Proyecto
     public Proyecto findProyecto(long id);

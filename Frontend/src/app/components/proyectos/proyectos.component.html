@@ -5,7 +5,9 @@
                     <h2>PROYECTOS</h2>
                </div>        
                <div class=" divtitle col-xs-2 col-sm-2 col-md-2 col-lg-2 pe-0">
-                    <a class="btn btn-primary tooltips " data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-plus"></i></a>
+                    <button type="button" class="btn btn-success" (click)="onOpenModal('agregrar')">
+                         <a class="nav-link " style="color:aliceblue"> Agregar <span class="sr-only">(current)</span></a>
+                    </button>
                </div>
           </div>
      </div> 
@@ -21,9 +23,9 @@
                                              <h1>{{pro.proTitulo}}</h1>
                                         </div>
                                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 pt-1">
-                                             <a class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
-                                        
-                                             <a class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+                                             <a (click)="onOpenModal('editar',pro)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
+                                   
+                                             <a (click)="onOpenModal('borrar',pro)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash"></i></a>
                                         </div>
                                    </div>
                                    <div class="row">
@@ -38,3 +40,114 @@
      </div>           
 </div> 
   
+<!-- Modal AGREGAR-->
+<div  class="modal fade" id="agrProyectoModal"  tabindex="-1" role="dialog" aria-labelledby="AgregrarProyectoModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+                  <h5 class="modal-title" id="AgregrarProyectoModalLabel">Agregar Proyecto</h5>
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+         </div>
+         <div class="modal-body">
+               <form #addForm="ngForm"  >
+                    <div class="form-group">                      
+                         <input type="hidden" ngModel name="persona" id="persona" class="form-control" placeholder="">
+                    </div>
+                    <div class="form-group">
+                         <label for="proTitulo">Titulo</label>
+                         <input type="text" ngModel name="proTitulo" id="proTitulo" class="form-control" placeholder="Titulo" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="proDescripcion">Descripcion</label>
+                         <input type="text" ngModel name="proDescripcion" id="proDescripcion" class="form-control" placeholder="Descripcion" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="proFechaInicio">Fecha Inicio</label>
+                         <input type="text" ngModel name="proFechaInicio" id="proFechaInicio" class="form-control" placeholder="Fecha Inicio" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="proFechaFin">Fecha Fin</label>
+                         <input type="text" ngModel name="proFechaFin" id="proFechaFin" class="form-control" placeholder="Fecha Fin" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="proImgUrl">Link imagen</label>
+                         <input type="text" ngModel name="proImgUrl" id="proImgUrl" class="form-control" placeholder="Url imagen" required>
+                    </div>
+               </form>               
+         </div>
+         <div class="modal-footer">
+                  <button type="button" id="agregar-pro-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button [disabled]="addForm.invalid" (click)="onAgregarPro(addForm)" type="submit" class="btn btn-primary">Agregar</button>
+         </div>
+       </div>
+     </div>
+</div>
+
+<!-- Modal Editar-->
+<div  class="modal fade" id="editProyectoModal"  tabindex="-1" role="dialog" aria-labelledby="EditarProyectoModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+                  <h5 class="modal-title" id="EditarProyectoModalLabel">Agregar Proyecto</h5>
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+         </div>
+         <div class="modal-body">
+               <form #editForm="ngForm"  >
+                    <div class="form-group">                      
+                         <input type="hidden" ngModel name="persona" id="persona" class="form-control" placeholder="">
+                    </div>
+                    <div class="form-group">
+                         <label for="proId">Proyecto ID</label>
+                         <input type="text" readonly="true" ngModel="{{editPro?.proId}}" name="proId" id="proId" class="form-control" placeholder="Titulo" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="proTitulo">Titulo</label>
+                         <input type="text" ngModel="{{editPro?.proTitulo}}" name="proTitulo" id="proTitulo" class="form-control" placeholder="Titulo" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="proDescripcion">Descripcion</label>
+                         <input type="text" ngModel="{{editPro?.proDescripcion}}" name="proDescripcion" id="proDescripcion" class="form-control" placeholder="Descripcion" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="proFechaInicio">Fecha Inicio</label>
+                         <input type="text" ngModel="{{editPro?.proFechaInicio}}" name="proFechaInicio" id="proFechaInicio" class="form-control" placeholder="Fecha Inicio" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="proFechaFin">Fecha Fin</label>
+                         <input type="text" ngModel="{{editPro?.proFechaFin}}" name="proFechaFin" id="proFechaFin" class="form-control" placeholder="Fecha Fin" required>
+                    </div>
+                    <div class="form-group">
+                         <label for="proImgUrl">Link imagen</label>
+                         <input type="text" ngModel="{{editPro?.proImgUrl}}" name="proImgUrl" id="proImgUrl" class="form-control" placeholder="Url imagen" required>
+                    </div>
+               </form>               
+         </div>
+         <div class="modal-footer">
+                  <button type="button" id="editar-Pro-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button (click)="onEditarPro(editForm)" type="submit" class="btn btn-primary"  data-dismiss="modal">Editar</button>
+         </div>
+       </div>
+     </div>
+</div>
+
+<!-- Modal Borrar-->
+<div  class="modal fade" id="borrProyectoModal"  tabindex="-1" role="dialog" aria-labelledby="BorrarProyectoModalLabel" aria-hidden="true">
+     <div  class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+                  <h5 class="modal-title" id="BorrarProyectoModalLabel">Borrar Proyecto</h5>
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+         </div>
+         <div class="modal-body">
+               <p>
+                    Esta seguro de borrar la Proyecto:
+                    {{delPro?.proTitulo}}
+               </p>              
+         </div>
+         <div class="modal-footer">
+                  <button type="button" id="borrar-pro-form" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                  <button (click)="onBorrarPro(delPro?.proId)" type="submit" class="btn btn-primary" data-dismiss="modal" >SI</button>
+         </div>
+       </div>
+     </div>
+</div>

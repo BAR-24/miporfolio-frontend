@@ -28,6 +28,11 @@ public class HabilidadController {
         return iHabilidadService.getTodas();
     }
 
+    @GetMapping("/habilidad/traerporprs/{prsId}")
+    public List<Habilidad> getTodasByPrsId(@PathVariable("prsId") Long prsId){
+        return iHabilidadService.getTodasByPrsId(prsId);
+    }
+
     @PostMapping("/habilidad/crear")
     public String crearHabilidad(@RequestBody Habilidad Habilidad){
     

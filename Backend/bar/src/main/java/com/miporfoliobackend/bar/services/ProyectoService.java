@@ -27,6 +27,12 @@ public class ProyectoService implements IProyectoService{
     }
 
     @Override
+    public List<Proyecto> getTodasByPrsId(Long prsId) {
+        List<Proyecto> listProyectos = iProyectoRepository.findAllByPersona(prsId);
+        return listProyectos;
+    }
+
+    @Override
     public Proyecto saveProyecto(Proyecto Proyecto) {
         return iProyectoRepository.save(Proyecto);
         
