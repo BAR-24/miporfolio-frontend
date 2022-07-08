@@ -37,10 +37,11 @@ public class PersonaController {
     }
 
     @PutMapping("/personas/editar")
-    public ResponseEntity<Persona> editPersona(@RequestBody Persona persona){
+    public ResponseEntity<Persona> editPersonaStatus(@RequestBody Persona persona){
         Persona ediPersona = ipersonaService.savePersona(persona);
         return new ResponseEntity<>(ediPersona, HttpStatus.CREATED);
     }    
+  
 
     @PutMapping("/personas/editar/{id}")
     public Persona editPersona(@PathVariable("id") Long id, 

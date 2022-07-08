@@ -1,16 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background-image: url(https://es.rankiapro.com/wp-content/uploads/2019/08/fondo-tecnologico-preferido-selectores.jpg);
-    background-repeat: no-repeat;
+    background-color: #1467bd !important;
+    /*background-image: url(https://es.rankiapro.com/wp-content/uploads/2019/08/fondo-tecnologico-preferido-selectores.jpg);
+    background-repeat: no-repeat;*/
     background-size: cover;
     padding: 2% 5% 2% 5%;
 }
 
 
 div {
-    background-color: rgb(120, 185, 187);
+    background-color: #98defb;
+
     
-    
+}
+
+.container {
+    background-color: transparent !important;
 }
 
 p {

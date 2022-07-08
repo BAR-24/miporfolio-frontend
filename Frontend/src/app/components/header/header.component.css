@@ -4,7 +4,12 @@ app-redes {
    float: right;
 }
 
+#header{
+    background-color: transparent !important;
+}
+
 #banner {
+    height: 312px;
     display:inline-block;
     position:relative; 
     z-index: 1;
@@ -12,6 +17,7 @@ app-redes {
 
 #banner img {    
     width: 100%;
+    height: 100%;
     z-index: -2;
  }
 
@@ -53,3 +59,15 @@ h4 {
 .m-3 {
     margin: 0rem !important;
 }
+
+#editFotoPortadaModal {
+    background-color: transparent !important;
+ }
+ 
+ #editFotoPerfilModal{
+    background-color: transparent !important;
+ }
+ 
+ #editInfoPerfilModal {
+    background-color: transparent !important;
+ }

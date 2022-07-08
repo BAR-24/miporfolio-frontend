@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -59,7 +60,11 @@ public class Persona {
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
     private List<Proyecto> listPro = new ArrayList<>();
 
-  
+    @OneToOne(mappedBy = "persona", fetch = FetchType.LAZY)
+    private Redes redes = new Redes();
+
+   
+
     public Persona(){
 
     }
@@ -176,7 +181,15 @@ public class Persona {
         this.listPro = listPro;
     }
    
-  
+    public Redes getRedes() {
+        return redes;
+    }
+
+    public void setRedes(Redes rds) {
+        redes = rds;
+    }
+    
+
    
 
 }

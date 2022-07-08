@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Redes } from 'src/app/models/Redes.model';
+import { RedesService } from 'src/app/services/redes.service';
 
 @Component({
   selector: 'app-redes',
@@ -6,10 +10,69 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./redes.component.css']
 })
 export class RedesComponent implements OnInit {
+  @Input() redes?: Redes = new Redes(0,"","","","");
+  @Input() prsId?: number = 0;
 
-  constructor() { }
+  public editRds: Redes | undefined;
+
+  constructor(private redesService: RedesService) { }
 
   ngOnInit(): void {
   }
+
+  public getRedes():void{
+    this.redesService.traerRedesByPersona(this.prsId).subscribe({
+      next: (Response: Redes)=>{ 
+            this.redes = Response;      
+       },
+       error:(error:HttpErrorResponse)=>{
+         alert(error.message);
+         
+       } 
+   })
+ }
+
+  public onOpenModal(mode:String,rds?:Redes):void {
+      const container=document.getElementById('main-container');
+      const button=document.createElement('button');
+      button.style.display='none';
+    
+      button.setAttribute('data-toggle','modal');
+
+      if(mode==='editarRedes')
+      {
+        this.editRds=rds;          
+        button.setAttribute('data-target','#editRedesModal');
+
+      }
+
+
+      container?.appendChild(button);
+      button.click();
+
+    } 
+
+    public onEditarRds(editForm: NgForm){       
+        
+      document.getElementById('editar-rds-form')?.click(); 
+    
+      editForm.control.patchValue({'persona': {"prsId" : `${this.prsId?.toString()}`} });
+
+      this.redesService.editarRedes(editForm.value).subscribe({
+        next: (response: Redes) => { 
+          this.getRedes();
+        
+        },
+        error:(error:HttpErrorResponse)=>{
+          alert(error.message);
+          
+        } 
+    })
+
+
+}
+
+
+
 
 }

@@ -18,6 +18,6 @@ export class PersonaService {
   } 
 
   public editarPersona(prs:Persona): Observable<any>{
-    return this.http.put(`${this.URL}/persona/editar`,prs, {responseType: 'text'});
+    return this.http.put(`${this.URL}/personas/editar`,prs, {responseType: 'text'});
   }
 }

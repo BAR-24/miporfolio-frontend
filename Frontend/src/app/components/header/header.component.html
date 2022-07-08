@@ -1,88 +1,105 @@
 <div class="contanier" id="header">   
    <div class="row">
 
-        <app-nav></app-nav>
+        <app-nav [redes]="persona.redes" [prsId]="persona.prsId"></app-nav>
         
         <div id="banner" > 
             <div>
-                <a (click)="onOpenModal('editar',persona)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
+                <a (click)="onOpenModal('editarFotoPortada',persona)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
             </div>
             <img src={{persona.prsImgPortadaUrl}} alt="Mi querido plottier">                    
         </div>
-        <div class="m-3" >
-            <img class="img-responsive profile-image border border-3 rounded-circle " src={{persona.prsImgPerfilUrl}} alt="Yo-yo">      
-        </div>
 
-        <div class="card">
-            <div class="card-text col-xs-12 col-sm-12 col-md-12 col-lg-12 p-3">  
-                <h1> {{persona.prsApellido}} {{ persona.prsNombre}} </h1>
-            </div> 
-            <div class="card-body">                                          
-                 <div class="card-text col-xs-12 col-sm-12 col-md-12 col-lg-12">              
-                    <div class="row">
-                        <div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4 m-3">                                     
-                            <div >
-                                <span> {{persona.prsOcupacion}} </span>                                
-                            </div>
-                            <div>
-                                <span> {{persona.prsEdad}} años </span>
-                            </div>
-                            <div >                                
-                                <span> Neuquen (Argentina) </span>                                
-                            </div>
-                            <div>   
-                                <span><a href="#">Informacion de contacto</a></span>
-                            </div>
-                        </div>
-                        <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-3"> 
-                            <div class="card-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <h5>MI CAMINO HASTA AQUI</h5>                               
-                            </div> 
-                            <div class="card-text col-xs col-sm col-md col-lg">
-                                <p>{{persona.prsAcercaDeMi}}</p> 
-                            </div>   
-                        </div> 
-                        <div class="col-xs-12 col-sm col-md col-lg m-3" >
-                                <ul id="list-link-perfil">
-                                    <li>
-                                        <img src="../assets/img/issn.png" alt="">
-                                        <a href="#">
-                                            <h4>ISSN</h4>                                 
-                                        </a>
-                                        
-                                    </li>
-                                    <li>
-                                        <img src="../assets/img/uncoma.png" alt="">
-                                        <a href="">
-                                            <h4>UNCOMA</h4>                                   
-                                        </a>
-                                    
-                                    </li>
-                                </ul>   
-                        </div>      
-                    </div>
-                    <div class="row">        
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <button type="button" class="btn btn-primary">Tengo interes en</button>
-                                <button type="button" class="btn btn-primary">Añadir Seccion</button>
-                                <button type="button" class="btn btn-primary">Mas</button>       
-                        </div> 
-                    </div>
-            </div>  
-        </div>
-   </div>  
+        <div class="row m-3" >
+            <div>                
+                <img class="img-responsive profile-image border border-3 rounded-circle " src={{persona.prsImgPerfilUrl}} alt="Yo-yo">      
+   
+                <a (click)="onOpenModal('editarFotoPerfil',persona)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
+            </div>
+        </div>        
 </div> 
+
+<div class="card mt-4" id="main-container">
+            
+    <div class="row">  
+        <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11 p-3">
+            <h1> {{persona.prsApellido}} {{ persona.prsNombre}} </h1>
+        </div>
+        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 p-3">
+            <a (click)="onOpenModal('editarInfoPerfil',persona)" class="btn btn-primary tooltips align-middle" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
+        </div>
+    </div> 
+   
+    <div class="card-body">                                          
+         <div class="card-text col-xs-12 col-sm-12 col-md-12 col-lg-12">              
+            <div class="row">
+
+                <div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4 m-3">                                     
+                    <div >
+                        <span> {{persona.prsOcupacion}} </span>                                
+                    </div>
+                    <div>
+                        <span> {{persona.prsEdad}} años </span>
+                    </div>
+                    <div >                                
+                        <span> Neuquen (Argentina) </span>                                
+                    </div>
+                    <div>   
+                        <span><a href="#">Informacion de contacto</a></span>
+                    </div>
+                </div>
+
+                <div  class="col-xs-12 col-sm-6 col-md-6 col-lg-6 m-3"> 
+                    <div class="card-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h5>MI CAMINO HASTA AQUI</h5>                               
+                    </div> 
+                    <div class="card-text col-xs col-sm col-md col-lg">
+                        <p>{{persona.prsAcercaDeMi}}</p> 
+                    </div>   
+                </div> 
+                <!--<div class="col-xs-12 col-sm col-md col-lg m-3" >
+                        <ul id="list-link-perfil">
+                            <li>
+                                <img src="../assets/img/issn.png" alt="">
+                                <a href="#">
+                                    <h4>ISSN</h4>                                 
+                                </a>
+                                
+                            </li>
+                            <li>
+                                <img src="../assets/img/uncoma.png" alt="">
+                                <a href="">
+                                    <h4>UNCOMA</h4>                                   
+                                </a>
+                            
+                            </li>
+                        </ul>   
+                </div>      
+            </div> -->
+            </div> 
+            
+            <div class="row">        
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button type="button" class="btn btn-primary">Tengo interes en</button>
+                        <button type="button" class="btn btn-primary">Añadir Seccion</button>
+                        <button type="button" class="btn btn-primary">Mas</button>       
+                </div> 
+            </div>
+        </div>  
+    </div>
+
+</div>
      
-<!-- Modal Editar-->
+<!-- Modal Editar Portada-->
 <div  class="modal fade" id="editFotoPortadaModal"  tabindex="-1" role="dialog" aria-labelledby="EditarPortadaModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-                 <h5 class="modal-title" id="EditarPortadaModalLabel">Agregar Educacion</h5>
+                 <h5 class="modal-title" id="EditarPortadaModalLabel">Editar foto de portada</h5>
                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
         </div>
         <div class="modal-body">
-              <form #editForm="ngForm"  >
+              <form #editPortadaForm="ngForm"  >
                    <div class="form-group">
                         <label for="prsImgPortadaUrl">Link imagen portada</label>
                         <input type="text" ngModel="{{editPrs?.prsImgPortadaUrl}}" name="prsImgPortadaUrl" id="prsImgPortadaUrl" class="form-control" placeholder="Url imagen portada" required>
@@ -90,8 +107,72 @@
               </form>               
         </div>
         <div class="modal-footer">
-                 <button type="button" id="editar-edu-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                 <button (click)="onEditarPortada(editForm)" type="submit" class="btn btn-primary" data-dismiss="modal">Editar</button>
+                 <button type="button" id="editar-portada-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                 <button (click)="onEditarPortada(editPortadaForm)" type="submit" class="btn btn-primary" data-dismiss="modal">Editar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Editar Perfil-->
+<div  class="modal fade" id="editFotoPerfilModal"  tabindex="-1" role="dialog" aria-labelledby="EditarPerfilModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+                 <h5 class="modal-title" id="EditarPerfilModalLabel">Editar foto de perfil</h5>
+                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+        </div>
+        <div class="modal-body">
+              <form #editPerfilForm="ngForm"  >
+                   <div class="form-group">
+                        <label for="prsImgPerfilUrl">Link imagen perfil</label>
+                        <input type="text" ngModel="{{editPrs?.prsImgPerfilUrl}}" name="prsImgPerfilUrl" id="prsImgPerfilUrl" class="form-control" placeholder="Url imagen perfil" required>
+                   </div>
+              </form>               
+        </div>
+        <div class="modal-footer">
+                 <button type="button" id="editar-perfil-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                 <button (click)="onEditarPerfil(editPerfilForm)" type="submit" class="btn btn-primary" data-dismiss="modal">Editar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Editar Info Perfil-->
+<div  class="modal fade" id="editInfoPerfilModal"  tabindex="-1" role="dialog" aria-labelledby="EditarInfoPerfilModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+                 <h5 class="modal-title" id="EditarInfoPerfilModalLabel">Editar info de perfil</h5>
+                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+        </div>
+        <div class="modal-body">
+              <form #editInfoPerfilForm="ngForm">
+                    <div class="form-group">
+                            <label for="prsApellido">Apellido</label>
+                            <input type="text" ngModel="{{editPrs?.prsApellido}}" name="prsApellido" id="prsApellido" class="form-control" placeholder="Apellido" required>
+                    </div>
+                    <div class="form-group">
+                            <label for="prsNombre">Nombre</label>
+                            <input type="text" ngModel="{{editPrs?.prsNombre}}" name="prsNombre" id="prsNombre" class="form-control" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prsEdad">Edad</label>
+                        <input type="text" ngModel="{{editPrs?.prsEdad}}" name="prsEdad" id="prsEdad" class="form-control" placeholder="Edad" required>
+                    </div>
+                    <div class="form-group">
+                            <label for="prsOcupacion">Ocupacion</label>
+                            <input type="text" ngModel="{{editPrs?.prsOcupacion}}" name="prsOcupacion" id="prsOcupacion" class="form-control" placeholder="Ocupacion" required>
+                    </div>                    
+                    <div class="form-group">
+                                <label for="prsAcercaDeMi">Acerca de mi</label>
+                                <input type="text" ngModel="{{editPrs?.prsAcercaDeMi}}" name="prsAcercaDeMi" id="prsAcercaDeMi" class="form-control" placeholder="Acerca de mi" required>
+                    </div>
+              </form>               
+        </div>
+        <div class="modal-footer">
+                 <button type="button" id="editar-InfoPerfil-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                 <button (click)="onEditarInfoPerfil(editInfoPerfilForm)" type="submit" class="btn btn-primary" data-dismiss="modal">Editar</button>
         </div>
       </div>
     </div>

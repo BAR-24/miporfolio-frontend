@@ -1,8 +1,59 @@
-
-
-<a href=""><img src="../../../assets/img/logofacebook.png" alt=""></a>
-<a href=""><img src="../../../assets/img/logotwiter.png" alt=""></a>
-<a href=""><img src="../../../assets/img/linkedin.png" alt=""></a>
-<a href=""><img src="../../../assets/img/logogit.png" alt=""></a> 
-    
+<div>   
+     <div>
+          <div>
+               <a href="{{redes?.rdsFacebook}}"> <img src="../../../assets/img/logofacebook.png" alt=""></a>
+               <a href="{{redes?.rdsTwiter}}"> <img src="../../../assets/img/logotwiter.png" alt=""></a>
+               <a href="{{redes?.rdsLinkedIn}}"> <img src="../../../assets/img/linkedin.png" alt=""></a>
+               <a href="{{redes?.rdsGit}}"> <img src="../../../assets/img/logogit.png" alt=""></a> 
+          </div>
+          <div>
+               <a (click)="onOpenModal('editarRedes',redes)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
+          </div>
+     </div>
    
+</div>
+   
+<!-- Modal Editar-->
+<div  class="modal fade" id="editRedesModal"  tabindex="-1" role="dialog" aria-labelledby="EditarRedesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+                 <h5 class="modal-title" id="EditarRedesModalLabel">Editar Redes</h5>
+                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> </button>
+        </div>
+        <div class="modal-body">
+              <form #editForm="ngForm"  >
+                   <div class="form-group">                      
+                        <input type="hidden" ngModel name="persona" id="persona" class="form-control" placeholder="">
+                   </div>
+                   <div class="form-group">
+                        <label for="rdsId"> </label>
+                        <input type="hidden" readonly="true" ngModel="{{editRds?.rdsId}}" name="rdsId" id="rdsId" class="form-control" required>
+                   </div>
+                   <div class="form-group">
+                        <label for="rdsFacebook">Facebook</label>
+                        <input type="text" ngModel="{{editRds?.rdsFacebook}}" name="rdsFacebook" id="rdsFacebook" class="form-control" placeholder="Facebook" required>
+                   </div>
+                   <div class="form-group">
+                        <label for="rdsTwiter">Twiter</label>
+                        <input type="text" ngModel="{{editRds?.rdsTwiter}}" name="rdsTwiter" id="rdsTwiter" class="form-control" placeholder="Twiter" required>
+                   </div>
+                   <div class="form-group">
+                        <label for="rdsLinkedIn">Linkedin</label>
+                        <input type="text" ngModel="{{editRds?.rdsLinkedIn}}" name="rdsLinkedIn" id="rdsLinkedIn" class="form-control" placeholder="LinkedIn" required>
+                   </div>
+                   <div class="form-group">
+                        <label for="rdsGit">Git Hub</label>
+                        <input type="text" ngModel="{{editRds?.rdsGit}}" name="rdsGit" id="rdsGit" class="form-control" placeholder="Git" required>
+                   </div>
+                   
+        
+              </form>               
+        </div>
+        <div class="modal-footer">
+                 <button type="button" id="editar-rds-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                 <button (click)="onEditarRds(editForm)" type="submit" class="btn btn-primary" data-dismiss="modal">Editar</button>
+        </div>
+      </div>
+    </div>
+</div>
