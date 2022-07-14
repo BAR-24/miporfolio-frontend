@@ -8,6 +8,7 @@ import com.miporfoliobackend.bar.services.IProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,7 @@ public class ProyectoController {
         return iProyectoService.getTodasByPrsId(prsId);
     }
 
+
     @PostMapping("/proyecto/crear")
     public String crearProyecto(@RequestBody Proyecto Proyecto){
     
@@ -50,7 +52,6 @@ public class ProyectoController {
         iProyectoService.deleteProyecto(id);
         return "Se elimino proyecto con exito";
     }
-
 
     @PutMapping("/proyecto/editar")
     public ResponseEntity<Proyecto> editProyectoStatus(@RequestBody Proyecto Proyecto){

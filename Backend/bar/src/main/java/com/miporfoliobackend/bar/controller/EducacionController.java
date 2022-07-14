@@ -32,7 +32,7 @@ public class EducacionController {
     public List<Educacion> getTodasByPrsId(@PathVariable("prsId") Long prsId){
         return ieducacionService.getTodasByPrsId(prsId);
     }
-
+ 
     @PostMapping("/educacion/crear")
     public String crearEducacion(@RequestBody Educacion educacion){
     
@@ -51,7 +51,7 @@ public class EducacionController {
         return "Se elimino educacion con exito";
     }
 
-
+    
     @PutMapping("/educacion/editar")
     public ResponseEntity<Educacion> editEducacionStatus(@RequestBody Educacion educacion){
         Educacion editEducacion = ieducacionService.saveEducacion(educacion);

@@ -8,6 +8,7 @@ import com.miporfoliobackend.bar.services.IHabilidadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,12 +34,14 @@ public class HabilidadController {
         return iHabilidadService.getTodasByPrsId(prsId);
     }
 
+
     @PostMapping("/habilidad/crear")
     public String crearHabilidad(@RequestBody Habilidad Habilidad){
     
         iHabilidadService.saveHabilidad(Habilidad);
         return "Se creo Habilidad con exito!";
     }    
+
 
     @DeleteMapping("/habilidad/borrar/{id}")
     public String deleteHabilidad(@PathVariable("id") Long id){

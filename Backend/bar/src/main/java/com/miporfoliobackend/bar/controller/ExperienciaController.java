@@ -8,6 +8,7 @@ import com.miporfoliobackend.bar.services.IExperienciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,7 @@ public class ExperienciaController {
         return iexperienciaService.getTodasByPrsId(prsId);
     }
 
+  
     @PostMapping("/experiencia/crear")
     public String crearExperiencia(@RequestBody Experiencia exp){
     
@@ -45,12 +47,14 @@ public class ExperienciaController {
         return iexperienciaService.findExperiencia(id);
     }
 
+
     @DeleteMapping("/experiencia/borrar/{id}")
     public String deleteExperiencia(@PathVariable("id") Long id){
         iexperienciaService.deleteExperiencia(id);
         return "Se elimino experiencia con exito";
     }
 
+  
     @PutMapping("/experiencia/editar")
     public ResponseEntity<Experiencia> editExperienciaStatus(@RequestBody Experiencia exp){
         Experiencia editExp = iexperienciaService.saveExperiencia(exp);   

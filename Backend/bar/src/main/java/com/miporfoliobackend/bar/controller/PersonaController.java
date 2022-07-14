@@ -29,6 +29,7 @@ public class PersonaController {
         return ipersonaService.getPersonas();
     }
 
+  
     @PostMapping("/personas/crear")
     public String crearPersona(@RequestBody Persona persona){
     
@@ -42,7 +43,7 @@ public class PersonaController {
         return new ResponseEntity<>(ediPersona, HttpStatus.CREATED);
     }    
   
-
+    
     @PutMapping("/personas/editar/{id}")
     public Persona editPersona(@PathVariable("id") Long id, 
     @RequestParam("prsNombre") String nuevoNombre,
@@ -74,6 +75,7 @@ public class PersonaController {
              return new ResponseEntity<>(persona, HttpStatus.OK);        
     }
 
+   
     @DeleteMapping("/personas/borrar/{id}")
     public String deletePersona(@PathVariable("id") Long id){
         ipersonaService.deletePersona(id);

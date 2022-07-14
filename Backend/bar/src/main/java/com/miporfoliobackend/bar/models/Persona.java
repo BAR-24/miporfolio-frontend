@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.miporfoliobackend.bar.security.entity.Usuario;
 
 
 
@@ -63,6 +64,8 @@ public class Persona {
     @OneToOne(mappedBy = "persona", fetch = FetchType.LAZY)
     private Redes redes = new Redes();
 
+    @OneToOne(mappedBy = "persona", fetch = FetchType.LAZY)
+    private Usuario usuario = new Usuario();
    
 
     public Persona(){
@@ -187,6 +190,14 @@ public class Persona {
 
     public void setRedes(Redes rds) {
         redes = rds;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usr) {
+        usuario = usr;
     }
     
 
