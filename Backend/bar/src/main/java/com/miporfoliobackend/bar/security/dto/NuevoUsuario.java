@@ -8,18 +8,18 @@ import com.miporfoliobackend.bar.models.Persona;
 
 
 public class NuevoUsuario {
-    private String nombre;
+    private String usrNombre;
     private String usrName;
-    private String email;
-    private String password;
-    private Set<String> roles = new HashSet<>();
-    private Persona persona;
-
-    public String getNombre() {
-        return nombre;
+    private String usrEmail;
+    private String usrPassword;
+    private Set<String> usrRoles = new HashSet<>();
+    private Persona usrPersona;
+    
+    public String getUsrNombre() {
+        return usrNombre;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsrNombre(String usrNombre) {
+        this.usrNombre = usrNombre;
     }
     public String getUsrName() {
         return usrName;
@@ -27,33 +27,32 @@ public class NuevoUsuario {
     public void setUsrName(String usrName) {
         this.usrName = usrName;
     }
-    public String getEmail() {
-        return email;
+    public String getUsrEmail() {
+        return usrEmail;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsrEmail(String usrEmail) {
+        this.usrEmail = usrEmail;
     }
-    public String getPassword() {
-        return password;
+    public String getUsrPassword() {
+        return usrPassword;
     }
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUsrPassword(String usrPassword) {
+        this.usrPassword = usrPassword;
     }
-    public Set<String> getRoles() {
-        return roles;
+    public Set<String> getUsrRoles() {
+        return usrRoles;
     }
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
+    public void setUsrRoles(Set<String> usrRoles) {
+        this.usrRoles = usrRoles;
     }
-    
-    public Persona getPersona() {
-        return persona;
+    public Persona getUsrPersona() {
+        return usrPersona;
+    }
+    public void setUsrPersona(Persona usrPersona) {
+        this.usrPersona = usrPersona;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-   
+
     
 
     

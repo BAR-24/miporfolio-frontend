@@ -13,12 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.miporfoliobackend.bar.security.service.UserDatailsServiceImpl;
 
+
 public class JwtTokenFilter extends OncePerRequestFilter {
-    private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
+    private final static Logger logger = LoggerFactory.getLogger(JwtTokenFilter.class);
 
     @Autowired
     JwtProvider jwtProvider;
@@ -29,11 +31,12 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        try{
+        try
+        {
             String token = getToken(request);
             if(token != null && jwtProvider.validateToken(token)){
-                String nombreUsuario = jwtProvider.getNombreUsuarioFromToken(token);
-                UserDetails userDetails = userDatailsServiceImpl.loadUserByUsername(nombreUsuario);
+                String usrName = jwtProvider.getUsrNameFromToken(token);
+                UserDetails userDetails = userDatailsServiceImpl.loadUserByUsername(usrName);
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }
@@ -47,7 +50,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     {
         String header = request.getHeader("Authorization");
         if (header != null && header.startsWith("Bearer")) {
-            return header.replace("Beare","");
+            return header.replace("Bearer ","");
 
         }
         return null;

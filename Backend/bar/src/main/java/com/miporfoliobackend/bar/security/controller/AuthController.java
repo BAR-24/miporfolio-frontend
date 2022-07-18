@@ -53,24 +53,24 @@ public class AuthController {
         if(bindingResult.hasErrors()){
             return new ResponseEntity(new Mensaje("Error en datos ingresados"), HttpStatus.BAD_REQUEST);
         }
-        if(usrService.existsByNombreUsuario(nuevoUsuario.getUsrName())){
+        if(usrService.existsByusrName(nuevoUsuario.getUsrName())){
             return new ResponseEntity(new Mensaje("Nombre de usuario ya existe"), HttpStatus.BAD_REQUEST);
         }
-        if(usrService.existsByusrEmail(nuevoUsuario.getEmail())){
+        if(usrService.existsByusrEmail(nuevoUsuario.getUsrEmail())){
             return new ResponseEntity(new Mensaje("Nombre de usuario ya existe"), HttpStatus.BAD_REQUEST);
         }
 
-        Usuario usr = new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getUsrName(),
-        nuevoUsuario.getEmail(), passEncoder.encode(nuevoUsuario.getPassword()));
+        Usuario usr = new Usuario(nuevoUsuario.getUsrNombre(), nuevoUsuario.getUsrName(),
+        nuevoUsuario.getUsrEmail(), passEncoder.encode(nuevoUsuario.getUsrPassword()));
 
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
 
-        if (nuevoUsuario.getRoles().contains("admin")) {
+        if (nuevoUsuario.getUsrRoles().contains("admin")) {
             roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
         }
         usr.setRoles(roles);
-        usr.setPersona(nuevoUsuario.getPersona());
+        usr.setPersona(nuevoUsuario.getUsrPersona());
         usrService.save(usr);
 
         return new ResponseEntity<>(new Mensaje("Usuario guardado"),HttpStatus.CREATED);
@@ -84,7 +84,7 @@ public class AuthController {
         }
 
         Authentication auth = authManager.authenticate(new UsernamePasswordAuthenticationToken(
-            loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
+            loginUsuario.getUsrName(), loginUsuario.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(auth);
         

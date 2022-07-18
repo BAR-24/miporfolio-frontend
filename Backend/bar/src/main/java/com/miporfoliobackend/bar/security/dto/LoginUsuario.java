@@ -5,15 +5,15 @@ import javax.validation.constraints.NotBlank;
 public class LoginUsuario {
 
     @NotBlank
-    private String nombreUsuario;
+    private String usrName;
     @NotBlank
     private String password;
     
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getUsrName() {
+        return usrName;
     }
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setUsrName(String usrName) {
+        this.usrName = usrName;
     }
     public String getPassword() {
         return password;
@@ -21,6 +21,8 @@ public class LoginUsuario {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+ 
 
     
     

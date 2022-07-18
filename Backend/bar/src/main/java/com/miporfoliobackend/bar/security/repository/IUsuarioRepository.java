@@ -10,7 +10,7 @@ import com.miporfoliobackend.bar.security.entity.Usuario;
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
     
-    Optional<Usuario> findByusrNombre(String usrNombre);
+    Optional<Usuario> findByusrName(String usrName);
 
     boolean existsByusrNombre(String usrNombre);
 

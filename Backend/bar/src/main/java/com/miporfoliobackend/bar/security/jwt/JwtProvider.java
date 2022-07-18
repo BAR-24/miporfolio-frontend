@@ -1,5 +1,6 @@
 package com.miporfoliobackend.bar.security.jwt;
 
+
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -19,41 +20,39 @@ import io.jsonwebtoken.UnsupportedJwtException;
 
 @Component
 public class JwtProvider {
-    private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JwtProvider.class);
+    private static final long EXPIRE_DURATION = 1*60*60*1000;
 
     @Value("${jwt.secret}")
-    private String secret;
-
-    @Value("${jwt.expiration}")
-    private int expiration;
+    private String secret;  
 
     public String generateToken(Authentication authentication){
         UsuarioPrincipal usuarioPrincipal = (UsuarioPrincipal) authentication.getPrincipal();
         return Jwts.builder().setSubject(usuarioPrincipal.getUsername())
-        .setIssuedAt(new Date())
-        .setExpiration(new Date(new Date().getTime()+expiration*1000))
+        .setExpiration(new Date(new Date().getTime()+EXPIRE_DURATION))
         .signWith(SignatureAlgorithm.HS512, secret)
         .compact();
     }
 
-    public String getNombreUsuarioFromToken(String token){
+    public String getUsrNameFromToken(String token){
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
 
     public boolean validateToken(String token){
         try{
+            
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             return true;
         } catch (MalformedJwtException e){
-            logger.error("Token mal formado");
+            LOGGER.error("Token mal formado");
         } catch (UnsupportedJwtException e){
-            logger.error("Token no soportado");
+            LOGGER.error("Token no soportado");
         } catch (ExpiredJwtException e){
-            logger.error("Token expirado");
+            LOGGER.error("Token expirado");
         } catch (IllegalArgumentException e){
-            logger.error("Token vacio");
+            LOGGER.error("Token vacio");
         } catch (SignatureException e){
-            logger.error("Firma no valida");
+            LOGGER.error("Firma no valida");
         }
         return false;
     }
