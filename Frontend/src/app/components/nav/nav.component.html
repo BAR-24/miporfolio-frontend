@@ -1,15 +1,18 @@
 <div class="container">
     <div class="row">
-        <div class="applogo p-2 col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <div class="applogo p-2 col-xs-12 col-sm-3 col-md-3 col-lg-3 text-center">
             <app-logo></app-logo>
         </div>
-        <div class="appredes p-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+        <div class="appredes p-4 col-xs-12 col-sm-5 col-md-5 col-lg-5 text-center">
             <app-redes [redes]="redes" [prsId]="prsId"></app-redes>
-        </div>
-        <div class="p-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-            <button type="button" class="btn btn-success" (click)="onOpenModal('login')">
+        </div>  
+        <div class="pt-5 col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+            <button type="button" class="btn btn-success m-2" (click)="onOpenModal('login')" *ngIf="!isLogged || !isUsrAdmin">
                 <a class="nav-link " style="color:aliceblue"> Iniciar Sesion <span class="sr-only">(current)</span></a>
             </button>   
+            <button type="button" class="btn btn-success m-2" *ngIf="isLogged && isUsrAdmin" (click)="onLogOut()">
+                <a class="nav-link " style="color:aliceblue"> Cerrar Sesion <span class="sr-only">(current)</span></a>
+            </button> 
          </div>
     </div>
 </div>

@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 
 import { Experiencia } from 'src/app/models/Experiencia.model';
 import { ExperienciaService } from 'src/app/services/experiencia.service';
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -16,19 +17,23 @@ import { ExperienciaService } from 'src/app/services/experiencia.service';
 export class ExperienciaComponent implements OnInit {
     @Input() experiencias: Experiencia[] = [];
     @Input() prsId?: number = 0;
-  
+    
+    isUsrAdmin = false;
+    isLogged = false;
 
     public editExp: Experiencia | undefined;
     public delExp: Experiencia | undefined;
     
-    constructor(private expService:ExperienciaService) { 
+    constructor(private tokenService : TokenService ,private expService:ExperienciaService) { 
  
 
     }
 
     ngOnInit(): void {
        
-        
+      this.tokenService.getIsUsrAdmin().subscribe( Admin => this.isUsrAdmin = Admin); 
+      this.tokenService.getIsLogged().subscribe( logged => this.isLogged = logged); 
+    
     
     }
 

@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Redes } from 'src/app/models/Redes.model';
 import { RedesService } from 'src/app/services/redes.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-redes',
@@ -12,12 +13,19 @@ import { RedesService } from 'src/app/services/redes.service';
 export class RedesComponent implements OnInit {
   @Input() redes?: Redes = new Redes(0,"","","","");
   @Input() prsId?: number = 0;
-
+  
+  isUsrAdmin = false;
+  isLogged = false;
+  
   public editRds: Redes | undefined;
 
-  constructor(private redesService: RedesService) { }
+  constructor(private tokenService : TokenService , private redesService: RedesService) { }
 
   ngOnInit(): void {
+
+    this.tokenService.getIsUsrAdmin().subscribe( Admin => this.isUsrAdmin = Admin); 
+    this.tokenService.getIsLogged().subscribe( logged => this.isLogged = logged); 
+
   }
 
   public getRedes():void{

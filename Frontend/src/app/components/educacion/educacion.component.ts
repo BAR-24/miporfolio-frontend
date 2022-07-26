@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 
 import { Educacion } from 'src/app/models/Educacion.model';
 import { EducacionService } from 'src/app/services/educacion.service';
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -17,18 +18,21 @@ export class EducacionComponent implements OnInit {
     @Input() educaciones: Educacion[] = [];
     @Input() prsId?: number = 0;
   
-
+    isUsrAdmin = false;
+    isLogged = false;
+  
     public editEdu: Educacion | undefined;
     public delEdu: Educacion | undefined;
     
-    constructor(private educacionService:EducacionService) { 
+    constructor(private tokenService : TokenService ,private educacionService:EducacionService) { 
  
 
     }
 
     ngOnInit(): void {
        
-        
+      this.tokenService.getIsUsrAdmin().subscribe( Admin => this.isUsrAdmin = Admin); 
+      this.tokenService.getIsLogged().subscribe( logged => this.isLogged = logged); 
     
     }
 

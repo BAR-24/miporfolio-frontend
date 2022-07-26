@@ -1,15 +1,14 @@
-<div>   
-     <div>
-          <div>
+<div class="row text-center" >   
+     
+          <div col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center>
                <a href="{{redes?.rdsFacebook}}"> <img src="../../../assets/img/logofacebook.png" alt=""></a>
                <a href="{{redes?.rdsTwiter}}"> <img src="../../../assets/img/logotwiter.png" alt=""></a>
                <a href="{{redes?.rdsLinkedIn}}"> <img src="../../../assets/img/linkedin.png" alt=""></a>
-               <a href="{{redes?.rdsGit}}"> <img src="../../../assets/img/logogit.png" alt=""></a> 
+               <a href="{{redes?.rdsGit}}"> <img src="../../../assets/img/logogit.png" alt=""></a>
+
+               <a *ngIf="isLogged && isUsrAdmin" (click)="onOpenModal('editarRedes',redes)" class="btn btn-primary tooltips mt-4" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
           </div>
-          <div>
-               <a (click)="onOpenModal('editarRedes',redes)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
-          </div>
-     </div>
+   
    
 </div>
    

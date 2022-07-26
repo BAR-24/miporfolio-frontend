@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Persona } from 'src/app/models/Persona.model';
 import { PersonaService } from 'src/app/services/persona.service';
+import { TokenService } from 'src/app/services/token.service';
+
 
 @Component({
   selector: 'app-header',
@@ -12,18 +14,22 @@ import { PersonaService } from 'src/app/services/persona.service';
 
 export class HeaderComponent implements OnInit {
     @Input() persona: Persona = new Persona(0,"","",0,"","","","",[],[],[],[],undefined);
- 
+  
+    isUsrAdmin = false;
+    isLogged = false;
+
     public editPrs: Persona | undefined;
     public delPrs: Persona | undefined;
  
-   constructor(private personaService:PersonaService) { }
+   constructor(private tokenService  : TokenService,private personaService:PersonaService) { }
 
     ngOnInit(): void {
-
-
+      this.tokenService.getIsUsrAdmin().subscribe( Admin => this.isUsrAdmin = Admin); 
+      this.tokenService.getIsLogged().subscribe( logged => this.isLogged = logged); 
+      
     }
 
-      public getPersona():void{
+    public getPersona():void{
         this.personaService.getPersona().subscribe({
           next: (Response: Persona)=>{ 
                 this.persona = Response;      

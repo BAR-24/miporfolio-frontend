@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 
 import { Habilidad } from 'src/app/models/Habilidad.model';
 import { HabilidadService } from 'src/app/services/habilidad.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-hardsoftskins',
@@ -14,18 +15,21 @@ export class HardsoftskinsComponent implements OnInit {
   @Input() habilidades: Habilidad[] = [];
   @Input() prsId?: number = 0;
 
+  isUsrAdmin = false;
+  isLogged = false;
+  
   public editHab: Habilidad | undefined;
   public delHab: Habilidad | undefined;
 
-  constructor(private habService:HabilidadService) { 
+  constructor(private tokenService : TokenService , private habService:HabilidadService) { 
  
 
   }
 
   ngOnInit(): void {
      
-      
-  
+    this.tokenService.getIsUsrAdmin().subscribe( Admin => this.isUsrAdmin = Admin); 
+    this.tokenService.getIsLogged().subscribe( logged => this.isLogged = logged);
   }
 
   public getHabilidades():void{

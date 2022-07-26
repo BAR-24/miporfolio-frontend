@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 
 import { Proyecto } from 'src/app/models/Proyecto.model';
 import { ProyectoService } from 'src/app/services/proyecto.service';
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -17,20 +18,22 @@ import { ProyectoService } from 'src/app/services/proyecto.service';
 export class ProyectoComponent implements OnInit {
   @Input() proyectos: Proyecto[] = [];
   @Input() prsId?: number = 0;
-
+ 
+  isUsrAdmin = false;
+  isLogged = false;
 
   public editPro: Proyecto | undefined;
   public delPro: Proyecto | undefined;
   
-  constructor(private proService:ProyectoService) { 
+  constructor(private tokenService : TokenService ,private proService:ProyectoService) { 
 
 
   }
 
   ngOnInit(): void {
      
-      
-  
+    this.tokenService.getIsUsrAdmin().subscribe( Admin => this.isUsrAdmin = Admin); 
+    this.tokenService.getIsLogged().subscribe( logged => this.isLogged = logged); 
   }
 
   public getProyectos():void{

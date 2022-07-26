@@ -5,6 +5,7 @@ import { Redes } from 'src/app/models/Redes.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -14,8 +15,10 @@ export class NavComponent implements OnInit {
   @Input() redes?: Redes = new Redes(0,"","","","");
   @Input() prsId?: number = 0;
 
+  
   isLogged = false;
   isLogginFail = false;
+  isUsrAdmin = false;
   loginUsuario!: LoginUsuario;
   usrName! : string;
   password! : string;
@@ -28,8 +31,11 @@ export class NavComponent implements OnInit {
     if(this.tokenService.getToken()){
       this.isLogged = true;
       this.isLogginFail = false;
-      this.roles = this.tokenService.getAuthorities();
+      this.roles = this.tokenService.getAuthorities();    
+      
     }
+    this.tokenService.getIsUsrAdmin().subscribe( Admin => this.isUsrAdmin = Admin); 
+    this.tokenService.getIsLogged().subscribe( logged => this.isLogged = logged); 
   }
 
   public onOpenModal(mode:String):void {
@@ -49,20 +55,20 @@ export class NavComponent implements OnInit {
       button.click();
 
   } 
-
+ 
   public onLogin(loginForm: NgForm){      
     document.getElementById('login-form')?.click();
     
     this.loginUsuario = new LoginUsuario(loginForm.value.usrName,loginForm.value.password);
 
     this.authService.login(this.loginUsuario).subscribe(data => {
-      this.isLogged = true;
-      this.isLogginFail = false;
+     
       this.tokenService.setToken(data.token);
       this.tokenService.setUsrname(data.usrName);
       this.usrName = data.usrName;
       this.tokenService.setAuthorities(data.authorities);
-      this.roles = data.authorities;
+      this.roles = this.tokenService.getAuthorities();    
+    
 
     }, err => {
       this.isLogged = false;
@@ -73,6 +79,12 @@ export class NavComponent implements OnInit {
     )     
   }
 
+  public onLogOut() {
+    this.tokenService.logOut();
+    
+  }
+
+ 
  
 
 }

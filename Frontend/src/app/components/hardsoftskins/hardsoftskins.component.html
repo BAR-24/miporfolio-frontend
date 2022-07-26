@@ -5,7 +5,7 @@
                   <h2>HARD & SOFT SKINS</h2>
              </div>        
              <div class=" divtitle col-xs-2 col-sm-2 col-md-2 col-lg-2 pe-0">
-                  <button type="button" class="btn btn-success" (click)="onOpenModal('agregrar')">
+                  <button *ngIf="isLogged && isUsrAdmin" type="button" class="btn btn-success" (click)="onOpenModal('agregrar')">
                        <a class="nav-link " style="color:aliceblue"> Agregar <span class="sr-only">(current)</span></a>
                   </button>
              </div>
@@ -15,7 +15,7 @@
     <div class="card-body">
         <div class="row" >   
             <div class="col-xs-12 col-ms-4 col-md-4 col-lg-4 text-center" *ngFor="let hab of habilidades">   
-                <div class="d-inline col-xs-2 col-sm-2 col-md-2 col-lg-2 pt-1" >
+                <div *ngIf="isLogged && isUsrAdmin" class="d-inline col-xs-2 col-sm-2 col-md-2 col-lg-2 pt-1" >
                     <a (click)="onOpenModal('editar',hab)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
                     
                     <a (click)="onOpenModal('borrar',hab)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash"></i></a>
