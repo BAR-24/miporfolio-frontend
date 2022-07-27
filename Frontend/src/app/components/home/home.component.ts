@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private tokenService  : TokenService, private authService: AuthService, private personaService : PersonaService)
-   { 
+  { 
 
 
   }
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
         }
      })
 
-    if(this.tokenService.getToken() != null){
+    
         this.personaService.getPersona().subscribe({
           next: (response: Persona) =>{
             this.persona=response;
@@ -63,6 +63,6 @@ export class HomeComponent implements OnInit {
             alert(error.message);
           }
         })
-    }
+    
   }
 }
