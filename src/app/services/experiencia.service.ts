@@ -9,7 +9,7 @@ import { Experiencia } from '../models/Experiencia.model';
   providedIn: 'root'
 })
 export class ExperienciaService {
-  private URL = environment.urlBase;
+  private URL = "http://localhost:8080";
 
   constructor(private http: HttpClient) { }
 

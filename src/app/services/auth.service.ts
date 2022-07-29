@@ -11,7 +11,7 @@ import { JwtDto } from "../models/JwtDto.model";
 })
 
 export class AuthService {
-    private URL = environment.urlBase;
+    private URL = "http://localhost:8080";
 
     constructor(private httpClient: HttpClient){ 
 

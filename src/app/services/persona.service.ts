@@ -9,7 +9,7 @@ import { Persona } from '../models/Persona.model';
   providedIn: 'root'
 })
 export class PersonaService {
-  private URL = environment.urlBase;
+  private URL = "http://localhost:8080";
 
   constructor(private http: HttpClient) { }
 

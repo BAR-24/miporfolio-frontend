@@ -9,7 +9,7 @@ import { Educacion } from '../models/Educacion.model';
   providedIn: 'root'
 })
 export class EducacionService {
-  private URL = environment.urlBase;
+  private URL = "http://localhost:8080";
 
   constructor(private http: HttpClient) { }
 

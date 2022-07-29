@@ -9,7 +9,7 @@ import { Redes } from '../models/Redes.model';
   providedIn: 'root'
 })
 export class RedesService {
-  private URL = environment.urlBase;
+  private URL = "http://localhost:8080";
 
   constructor(private http: HttpClient) { }
 

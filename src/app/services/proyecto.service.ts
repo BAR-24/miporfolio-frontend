@@ -9,7 +9,7 @@ import { Proyecto } from '../models/Proyecto.model';
   providedIn: 'root'
 })
 export class ProyectoService {
-  private URL = environment.urlBase;
+  private URL = "http://localhost:8080";
 
   constructor(private http: HttpClient) { }
 
