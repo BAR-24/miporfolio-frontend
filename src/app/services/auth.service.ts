@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { NuevoUsuario } from "../models/NuevoUsuario.model";
 import { Observable } from "rxjs";
 import { LoginUsuario } from "../models/LoginUsuario.model";
@@ -11,7 +10,7 @@ import { JwtDto } from "../models/JwtDto.model";
 })
 
 export class AuthService {
-    private URL = "http://localhost:8080";
+    private URL = "https://miporfolioweb.herokuapp.com";
 
     constructor(private httpClient: HttpClient){ 
 
