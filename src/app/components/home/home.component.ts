@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   title = 'miporfolio';
   isUsrAdmin = false;
   
-  loginUsuario: LoginUsuario = new LoginUsuario("user","1234");
+  loginUsuario: LoginUsuario = new LoginUsuario('user','1234');
   errMjs! : string;
 
 
@@ -29,14 +29,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private tokenService  : TokenService, private authService: AuthService, private personaService : PersonaService)
   { 
-
+   
 
   }
 
   ngOnInit(): void {    
-
-    this.tokenService.getIsUsrAdmin().subscribe( Admin => this.isUsrAdmin = Admin); 
-   
 
     this.authService.login(this.loginUsuario).subscribe({ 
       next: (data: JwtDto) =>{
@@ -53,16 +50,18 @@ export class HomeComponent implements OnInit {
         }
      })
 
-    
-        this.personaService.getPersona().subscribe({
-          next: (response: Persona) =>{
-            this.persona=response;
-            
-          },
-          error:(error:HttpErrorResponse)=>{
-            alert(error.message);
-          }
-        })
+
+    this.tokenService.getIsUsrAdmin().subscribe( Admin => this.isUsrAdmin = Admin); 
+
+    this.personaService.getPersona().subscribe({
+      next: (response: Persona) =>{
+        this.persona=response;
+        
+      },
+      error:(error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    })
     
   }
 }

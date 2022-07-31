@@ -21,17 +21,18 @@
                     <a (click)="onOpenModal('borrar',hab)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash"></i></a>
                 </div> 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-1">                  
-                    <circle-progress
+                    <circle-progress                   
                     [percent]="hab.habPorcentaje"
                     [radius]="100"
                     [showUnits]="false"
-                    [title]="hab.habTitulo"
+                    [title]= "hab.habTitulo"
                     [outerStrokeWidth]="16"
                     [innerStrokeWidth]="8"
                     [outerStrokeColor]="'blue'"
                     [innerStrokeColor]="'#C7E596'"
                     [animation]="true"
-                    [animationDuration]="300">
+                    [animationDuration]="800"
+                    [lazy]="true">
                     </circle-progress>
                </div>
             </div>           
