@@ -42,6 +42,15 @@ export class HomeComponent implements OnInit {
         this.tokenService.setUsrname(data.usrName);     
         this.tokenService.setAuthorities(data.authorities);
 
+                    this.personaService.getPersona().subscribe({
+                      next: (response: Persona) =>{
+                        this.persona=response;
+                        
+                      },
+                      error:(error:HttpErrorResponse)=>{
+                        alert(error.message);
+                      }
+                    })
 
         }, error:(error:HttpErrorResponse)=>{
           this.errMjs = error.message;
@@ -53,15 +62,7 @@ export class HomeComponent implements OnInit {
 
     this.tokenService.getIsUsrAdmin().subscribe( Admin => this.isUsrAdmin = Admin); 
 
-    this.personaService.getPersona().subscribe({
-      next: (response: Persona) =>{
-        this.persona=response;
-        
-      },
-      error:(error:HttpErrorResponse)=>{
-        alert(error.message);
-      }
-    })
+    
     
   }
 }
